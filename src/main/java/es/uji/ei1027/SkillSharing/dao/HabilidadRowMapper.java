@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public final class NadadorRowMapper implements RowMapper<Habilidad> {
+public final class HabilidadRowMapper implements RowMapper<Habilidad> {
     public Habilidad mapRow(ResultSet rs, int rowNum) throws SQLException {
         Habilidad habilidad = new Habilidad();
         habilidad.setId_hab(rs.getString("id_hab"));
