@@ -57,6 +57,10 @@ http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 			<artifactId>jasypt</artifactId>
 			<version>1.9.2</version>
 		</dependency>
+		<dependency>
+			<groupId>jakarta.activation</groupId>
+			<artifactId>jakarta.activation-api</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

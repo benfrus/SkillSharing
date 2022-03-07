@@ -7,11 +7,10 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
-public class SkillSharingConfiguration {
 
 
     @Configuration
-    public class ClubesportiuConfiguration {
+    public class SkillSharingConfiguration {
 
         // Configura l'accés a la base de dades (DataSource)
         // a partir de les propietats a src/main/resources/applications.properties
@@ -23,4 +22,3 @@ public class SkillSharingConfiguration {
         }
     }
 
-}

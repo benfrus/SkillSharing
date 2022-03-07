@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public final class HabilidadRowMapper implements RowMapper<Habilidad> {
     public Habilidad mapRow(ResultSet rs, int rowNum) throws SQLException {
         Habilidad habilidad = new Habilidad();
-        habilidad.setId_hab(rs.getString("id_hab"));
+        habilidad.setId_hab(rs.getString("id_habilidad"));
         habilidad.setNombre(rs.getString("nombre"));
         habilidad.setTipo(rs.getString("tipo"));
         habilidad.setNivel(rs.getString("nivel"));
