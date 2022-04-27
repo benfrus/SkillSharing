@@ -1,5 +1,6 @@
 package es.uji.ei1027.SkillSharing.controller;
 
+import es.uji.ei1027.SkillSharing.dao.ColaboracionDao;
 import es.uji.ei1027.SkillSharing.dao.HabilidadDao;
 import es.uji.ei1027.SkillSharing.model.Habilidad;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,18 +13,21 @@ import java.util.List;
 
 
 @Controller
+@RequestMapping("/colaboracion")
 public class ControladorHabilidad {
 
-    @Autowired
-    HabilidadDao habilidadDao;
+    private ColaboracionDao colaboracionDao;
 
-    @RequestMapping("/prova")
-    public String provaWeb(Model model) {
-        //Habilidad habilidad = habilidadDao.getHabilidad("1");
-        String message = "Provant la Web del Club Esportiu";
-        String habilidad = "paco";
-        model.addAttribute("message", message);
-        return "prova";
+    @Autowired
+    public void setColaboracionDao(ColaboracionDao colaboracionDao) {
+        this.colaboracionDao = colaboracionDao;
+    }
+
+    // Operaciones
+    @RequestMapping("/lista")
+    public String listaColaboraciones(Model model) {
+        model.addAttribute("colaboraciones", colaboracionDao.getColaboraciones());
+        return "index";
     }
 
 }

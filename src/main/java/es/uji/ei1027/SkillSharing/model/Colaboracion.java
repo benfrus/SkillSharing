@@ -5,8 +5,8 @@ import java.time.LocalTime;
 public class Colaboracion {
 
     private String id_colab;
-    private LocalTime fecha_inicio;
-    private LocalTime fecha_fin;
+    private String fecha_inicio;
+    private String fecha_fin;
     private int horas_totales;
     private  String evaluacion;
     private  String comenatio;
@@ -16,7 +16,7 @@ public class Colaboracion {
 
     public Colaboracion(){ super(); }
 
-    public Colaboracion(String id_colab, LocalTime fecha_inicio, LocalTime fecha_fin, int horas_totales,
+    public Colaboracion(String id_colab, String fecha_inicio, String fecha_fin, int horas_totales,
                         String evaluacion, String comenatio, String id_oferta, String id_pet, String estado) {
         this.id_colab = id_colab;
         this.fecha_inicio = fecha_inicio;
@@ -38,19 +38,19 @@ public class Colaboracion {
         this.id_colab = id_colab;
     }
 
-    public LocalTime getFecha_inicio() {
+    public String getFecha_inicio() {
         return fecha_inicio;
     }
 
-    public void setFecha_inicio(LocalTime fecha_inicio) {
+    public void setFecha_inicio(String fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
-    public LocalTime getFecha_fin() {
+    public String getFecha_fin() {
         return fecha_fin;
     }
 
-    public void setFecha_fin(LocalTime fecha_fin) {
+    public void setFecha_fin(String fecha_fin) {
         this.fecha_fin = fecha_fin;
     }
 

@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>EI1027</title>
   <meta charset="UTF-8"/>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
 </head>
-<body>
-  <h1>EI1027 - Skill Sharing</h1>
-  <h2>Under construction</h2>
-  <ul>
+<body class="text-center">
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand">Skill Sharing</a>
+  <span>
+    <button type="button" class="btn btn-light">Registrarse</button>
+    <button type="button" class="btn btn-primary">Iniciar Sesión</button>
+  </span>
+</nav>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>¡Inicia Sesión!</strong> Si quieres colborar inicia sesión o regístrate.
+</div>
+  <h2>Bienvenido/a esta es la lista de colaboraciones</h2>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">Id Colaboración</th>
+    <th scope="col">Descripción</th>
+    <th scope="col">Horas totales</th>
+    <th scope="col">Estado</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="colab: ${colaboraciones}">
+    <td th:text="${colab.id_colab}"></td>
+    <td th:text="${colab.horas_totales}"></td>
+    <td th:text="${colab.estado}"></td>
+  </tr>
+  </tbody>
+</table>
   <li><a href="prova">Prova l'aplicació</a></li>
   </ul>
 </body>
