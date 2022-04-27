@@ -14,21 +14,9 @@ public class Colaboracion {
     private  String id_pet;
     private  String estado;
 
-    public Colaboracion(){ super(); }
+    public Colaboracion(){
 
-    public Colaboracion(String id_colab, String fecha_inicio, String fecha_fin, int horas_totales,
-                        String evaluacion, String comenatio, String id_oferta, String id_pet, String estado) {
-        this.id_colab = id_colab;
-        this.fecha_inicio = fecha_inicio;
-        this.fecha_fin = fecha_fin;
-        this.horas_totales = horas_totales;
-        this.evaluacion = evaluacion;
-        this.comenatio = comenatio;
-        this.id_oferta = id_oferta;
-        this.id_pet = id_pet;
-        this.estado = estado;
     }
-
 
     public String getId_colab() {
         return id_colab;
