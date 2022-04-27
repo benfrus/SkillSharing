@@ -4,19 +4,18 @@ import java.time.LocalTime;
 
 public class Colaboracion {
 
+
     private String id_colab;
     private String fecha_inicio;
     private String fecha_fin;
     private int horas_totales;
     private  String evaluacion;
-    private  String comenatio;
+    private  String comentario;
     private  String id_oferta;
     private  String id_pet;
     private  String estado;
 
-    public Colaboracion(){
 
-    }
 
     public String getId_colab() {
         return id_colab;
@@ -58,12 +57,12 @@ public class Colaboracion {
         this.evaluacion = evaluacion;
     }
 
-    public String getComenatio() {
-        return comenatio;
+    public String getComentario() {
+        return comentario;
     }
 
-    public void setComenatio(String comenatio) {
-        this.comenatio = comenatio;
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     public String getId_oferta() {
@@ -90,18 +89,22 @@ public class Colaboracion {
         this.estado = estado;
     }
 
+    public Colaboracion(){
+
+    }
+
     @Override
     public String toString() {
         return "Colaboracion{" +
-                "Identificador de la colaboración='" + id_colab + "\'" +
-                ", fecha de inicio='" + fecha_inicio + "\'" +
-                ", fecha de fin='" + fecha_fin + "\'" +
-                ", horas totales=" + horas_totales + "\'" +
-                ", evaluacion='" + evaluacion + "\'" +
-                ", comentario='" + comenatio + "\'" +
-                ", identificador de la oferta=" + id_oferta + "\'" +
-                ", identificador de la petición='" + id_pet + "\'" +
-                ", estado='" + estado + "\'" +
-                "}";
+                "id_colab='" + id_colab + '\'' +
+                ", fecha_inicio='" + fecha_inicio + '\'' +
+                ", fecha_fin='" + fecha_fin + '\'' +
+                ", horas_totales=" + horas_totales +
+                ", evaluacion='" + evaluacion + '\'' +
+                ", comentario='" + comentario + '\'' +
+                ", id_oferta='" + id_oferta + '\'' +
+                ", id_pet='" + id_pet + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 }

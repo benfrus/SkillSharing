@@ -29,7 +29,7 @@ public class SkillSharingApplication {
 		}
 
 /*	// Funció principal
-	public void run(String... strings) throws Exception {
+    public void run(String... strings) throws Exception {
 		log.info("Ací va el meu codi");
 	}
 

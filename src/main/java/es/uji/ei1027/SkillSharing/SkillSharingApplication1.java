@@ -42,11 +42,15 @@ public class SkillSharingApplication1 implements CommandLineRunner {
 
 		log.info("Ací va el meu codi");
 
-		Habilidad habilidad = jdbcTemplate.queryForObject(
-				"SELECT * FROM Habilidad WHERE id_habilidad='0'",
-				new HabilidadRowMapper());
-		log.info(habilidad.toString());
+		//Habilidad habilidad = jdbcTemplate.queryForObject(
+		//		"SELECT * FROM Habilidad WHERE id_habilidad='0'",
+		//		new HabilidadRowMapper());
+		//log.info(habilidad.toString());
 
+		Colaboracion colaboracion = jdbcTemplate.queryForObject(
+				"SELECT * FROM colaboracion WHERE id_colab='0'",
+				new ColaboracionRowMapper());
+		log.info(colaboracion.toString());
 
 	}
 }
