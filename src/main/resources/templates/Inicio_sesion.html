@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>EI1027</title>
+    <meta charset="UTF-8"/>
+    <!-- Afegim una fulla d’estil (Bootstrap) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body class="text-center">
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">Skill Sharing</a>
+    <span>
+    <button type="button" class="btn btn-light">Registrarse</button>
+    <button type="button" class="btn btn-primary">Iniciar Sesión</button>
+  </span>
+</nav>
+
+<div class="d-inline-flex p-2 bd-highlight">
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Correo Electrónico</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">Utiliza tu dirección de correo universitario</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Contraseña</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+    </form>
+</div>
+</body>
+</html>
