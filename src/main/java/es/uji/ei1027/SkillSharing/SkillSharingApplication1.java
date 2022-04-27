@@ -41,6 +41,7 @@ public class SkillSharingApplication1 implements CommandLineRunner {
 		// Funció principal
 
 		log.info("Ací va el meu codi");
+
 		Habilidad habilidad = jdbcTemplate.queryForObject(
 				"SELECT * FROM Habilidad WHERE id_habilidad='0'",
 				new HabilidadRowMapper());
