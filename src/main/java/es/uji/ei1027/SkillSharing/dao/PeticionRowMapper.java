@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public final class PeticionRowMapper implements RowMapper<Peticion> {
     public Peticion mapRow(ResultSet rs, int rowNum) throws SQLException {
         Peticion peticion = new Peticion();
-        peticion.setId_Pet(rs.getString("id_peticion"));
+        peticion.setId_Pet(rs.getString("id_pet"));
         peticion.setFecha_Inicio(rs.getString("fecha_inicio"));
         peticion.setFecha_Fin(rs.getString("fecha_fin"));
         peticion.setDescripcion(rs.getString("descripcion"));
