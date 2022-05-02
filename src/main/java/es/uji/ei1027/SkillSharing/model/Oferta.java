@@ -78,4 +78,5 @@ public class Oferta {
                 ", id_Estudiante='" + id_Estudiante + '\'' +
                 '}';
     }
+
 }

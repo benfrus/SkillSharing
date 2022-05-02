@@ -25,7 +25,7 @@ public class ColaboracionDao {
     public void addColaboracion(Colaboracion colaboracion) {
         jdbcTemplate.update("INSERT INTO colaboracion VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
                 colaboracion.getId_colab(), colaboracion.getFecha_inicio(), colaboracion.getFecha_fin(),
-                colaboracion.getHoras_totales(), colaboracion.getEvaluacion(), colaboracion.getComenatio(),
+                colaboracion.getHoras_totales(), colaboracion.getEvaluacion(), colaboracion.getComentario(),
                 colaboracion.getId_oferta(), colaboracion.getId_pet(), colaboracion.getEstado());
 
     }
@@ -40,7 +40,7 @@ public class ColaboracionDao {
        (excepte el nom, que és la clau primària) */
     public void updateColaboracion(Colaboracion colaboracion) {
         jdbcTemplate.update("UPDATE colaboracion SET  evaluacion = ?, comenatrio = ?, estado = ? WHERE id_colab = ? ",
-                colaboracion.getEvaluacion(), colaboracion.getComenatio(), colaboracion.getEstado(),
+                colaboracion.getEvaluacion(), colaboracion.getComentario(), colaboracion.getEstado(),
                 colaboracion.getId_colab() );
     }
 
