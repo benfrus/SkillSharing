@@ -1,23 +1,16 @@
 package es.uji.ei1027.SkillSharing;
 
-import java.util.List;
 import java.util.logging.Logger;
 
-import es.uji.ei1027.SkillSharing.dao.ColaboracionRowMapper;
-import es.uji.ei1027.SkillSharing.dao.EstudianteRowMapper;
-import es.uji.ei1027.SkillSharing.dao.HabilidadRowMapper;
-import es.uji.ei1027.SkillSharing.model.Colaboracion;
-import es.uji.ei1027.SkillSharing.model.Estudiante;
-import es.uji.ei1027.SkillSharing.model.Habilidad;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import javax.sql.DataSource;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
+
 public class SkillSharingApplication {
 
 	private static final Logger log = Logger.getLogger(SkillSharingApplication.class.getName());
