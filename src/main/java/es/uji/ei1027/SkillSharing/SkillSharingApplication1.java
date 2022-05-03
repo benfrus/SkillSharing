@@ -26,7 +26,7 @@ public class SkillSharingApplication1 implements CommandLineRunner {
 	// Funció principal
 	public void run(String... strings) throws Exception {
 		log.info("Ací va el meu codi");
-		prova();
+		//prova();
 	}
 
 	private JdbcTemplate jdbcTemplate;
