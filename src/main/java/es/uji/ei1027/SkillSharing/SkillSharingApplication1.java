@@ -80,7 +80,7 @@ public class SkillSharingApplication1 implements CommandLineRunner {
 		log.info("Dades de colab");
 		Colaboracion colab = colaboracionDao.getColaboracion("0");
 		log.info(colab.toString());
-
+/*
 		Colaboracion eColab = new Colaboracion();
 		eColab.setId_colab("2");
 		eColab.setFecha_inicio("2022-02-02");
@@ -107,7 +107,7 @@ public class SkillSharingApplication1 implements CommandLineRunner {
 			log.info("Esborrada correctament");
 		}
 
-
+*/
 	}
 
 }

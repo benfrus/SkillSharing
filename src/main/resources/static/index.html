@@ -23,24 +23,21 @@
   <strong>¡Inicia Sesión!</strong> Si quieres colborar inicia sesión o regístrate.
 </div>
   <h2>Bienvenido/a esta es la lista de colaboraciones</h2>
-<table class="table">
-  <thead class="thead-dark">
-  <tr>
-    <th scope="col">Id Colaboración</th>
-    <th scope="col">Descripción</th>
-    <th scope="col">Horas totales</th>
-    <th scope="col">Estado</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="colab: ${colaboraciones}">
-    <td th:text="${colab.id_colab}"></td>
-    <td th:text="${colab.horas_totales}"></td>
-    <td th:text="${colab.estado}"></td>
-  </tr>
-  </tbody>
-</table>
-  <li><a href="/login">Prova l'aplicació</a></li>
+ <li><a href="/colaboracion/lista">Gestión de Colaboradores</a></li>
+<tbody>
+<tr th:each="colaboracion: ${colaboraciones}">
+    <td th:text="${colaboracion.id_colab}"></td>
+    <td th:text="${colaboracion.fecha_inicio}"></td>
+    <td th:text="${colaboracion.fecha_fin}"></td>
+    <td th:text="${colaboracion.horas_totales}"></td>
+    <td th:text="${colaboracion.evaluacion}"></td>
+    <td th:text="${colaboracion.comentario}"></td>
+    <td th:text="${colaboracion.id_oferta}"></td>
+    <td th:text="${colaboracion.id_pet}"></td>
+    <td th:text="${colaboracion.estado}"></td>
+</tr>
+</tbody>
+
   </ul>
 </body>
 </html>

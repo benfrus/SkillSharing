@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import es.uji.ei1027.SkillSharing.model.Colaboracion;
+
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +57,7 @@ public class ColaboracionDao {
     }
 
     /* Obté tots els colaboracion. Torna una llista buida si no n'hi ha cap. */
-    public List<es.uji.ei1027.SkillSharing.model.Colaboracion> getColaboraciones() {
+    public List<Colaboracion> getColaboraciones() {
         try {
             return jdbcTemplate.query("SELECT * FROM colaboracion",
                     new ColaboracionRowMapper());
