@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import es.uji.ei1027.SkillSharing.model.Colaboracion;
+
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +39,7 @@ public class ColaboracionDao {
     }
 
     /* Actualitza els atributs del colaboracion
-       (excepte el nom, que és la clau primària) */
+       (excepte el id, que és la clau primària) */
     public void updateColaboracion(Colaboracion colaboracion) {
         jdbcTemplate.update("UPDATE colaboracion SET  evaluacion = ?, comenatrio = ?, estado = ? WHERE id_colab = ? ",
                 colaboracion.getEvaluacion(), colaboracion.getComentario(), colaboracion.getEstado(),
@@ -47,8 +49,7 @@ public class ColaboracionDao {
     /* Obté el colaboracion amb el id donat. Torna null si no existeix. */
     public Colaboracion getColaboracion(String id_colab) {
         try {
-            return jdbcTemplate.queryForObject("SELECT * FROM colaboracion WHERE id_colab = ?",
-                    new es.uji.ei1027.SkillSharing.dao.ColaboracionRowMapper(), id_colab);
+            return jdbcTemplate.queryForObject("SELECT * FROM colaboracion WHERE id_colab = ?",new ColaboracionRowMapper(), id_colab);
         }
         catch(EmptyResultDataAccessException e) {
             return null;
@@ -56,10 +57,10 @@ public class ColaboracionDao {
     }
 
     /* Obté tots els colaboracion. Torna una llista buida si no n'hi ha cap. */
-    public List<es.uji.ei1027.SkillSharing.model.Colaboracion> getColaboraciones() {
+    public List<Colaboracion> getColaboraciones() {
         try {
             return jdbcTemplate.query("SELECT * FROM colaboracion",
-                    new es.uji.ei1027.SkillSharing.dao.ColaboracionRowMapper());
+                    new ColaboracionRowMapper());
         }
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Colaboracion>();

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Colaboracion/lista</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+<h1>Lista colaboraciones</h1><table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Id Colaboración</th>
+        <th scope="col">Fecha Inicio</th>
+        <th scope="col">Fecha Fin</th>
+        <th scope="col">Horas Totales</th>
+        <th scope="col">Evaluacion</th>
+        <th scope="col">Comentario</th>
+        <th scope="col">Id Oferta</th>
+        <th scope="col">Id Peticion</th>
+        <th scope="col">Estado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="colaboracion: ${colaboraciones}">
+        <td th:text="${colaboracion.id_colab}"></td>
+        <td th:text="${colaboracion.fecha_inicio}"></td>
+        <td th:text="${colaboracion.fecha_fin}"></td>
+        <td th:text="${colaboracion.horas_totales}"></td>
+        <td th:text="${colaboracion.evaluacion}"></td>
+        <td th:text="${colaboracion.comentario}"></td>
+        <td th:text="${colaboracion.id_oferta}"></td>
+        <td th:text="${colaboracion.id_pet}"></td>
+        <td th:text="${colaboracion.estado}"></td>
+    </tr>
+    </tbody>
+</table>
+<a href="add">Afegeix nadador</a> ⑤
+</body>
+</html>

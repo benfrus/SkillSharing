@@ -1,5 +1,10 @@
 package es.uji.ei1027.SkillSharing.model;
 
+import ch.qos.logback.core.joran.util.StringToObjectConverter;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.time.LocalTime;
 
 public class Colaboracion {
@@ -25,8 +30,7 @@ public class Colaboracion {
         this.id_colab = id_colab;
     }
 
-    public String getFecha_inicio() {
-        return fecha_inicio;
+    public String getFecha_inicio() { return fecha_inicio;
     }
 
     public void setFecha_inicio(String fecha_inicio) {
