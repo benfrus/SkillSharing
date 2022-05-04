@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>EI1027</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">Skill Sharing</a>
+</nav>
+<body class="text-center">
+<h2 class="fw-normal mb-7 pb-7" style="letter-spacing: 3px;">¡Pasa a formar parte de nuestra comunidad!</h2>
+<div class="d-inline-flex p-2 bd-highlight">
+    <form action="#" th:action="@{/signin}"
+          th:object="${user}" method="post">
+
+
+
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="idestudiante">Código de estudiante </label>
+            <input type="text" class="form-control form-control-lg" id="idestudiante" required/>
+            <small id="estudianteHelp" class="form-text text-muted">Introduce tu alXXXXXX</small>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="usuario">Usuario </label>
+            <input type="text" class="form-control form-control-lg" id="usuario" required/>
+            <small id="usuarioHelp" class="form-text text-muted">El usuario debe contener como máximo 8 carácteres</small>
+        </div>
+
+
+            <div class="form-outline mb-4">
+                <div class="form-group">
+                    <label class="form-label" for="examplePassword1">Contraseña </label>
+                    <input class="form-control form-control-lg" type="password" id ="examplePassword1" th:field="*{password}" required/>
+                </div>
+        </div>
+
+
+
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="nombre">Nombre </label>
+            <input type="text" class="form-control form-control-lg" id="nombre" required/>
+        </div>
+
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="apellidos">Apellidos </label>
+            <input type="text" class="form-control form-control-lg" id="apellidos" required/>
+    </div>
+
+
+
+    <div class="form-outline mb-4">
+        <label class="form-label" for="exampleInputEmail1">E-mail </label>
+        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"  th:field="*{username}" required/>
+        <small id="emailHelp" class="form-text text-muted">Utiliza tu dirección de correo universitario</small>
+    </div>
+
+    <div class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+
+
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="grado">Grado </label>
+            <Select class="form-control form-control-lg" id="grado" name="Grado" required>
+
+                <option value="">--Escoge el grado que estas cursando --</option>
+
+                <option value="1">Ingenieria Informática</option>
+
+                <option value="2">Traducción e interpretación</option>
+
+                <option value="3">Lenguas modernas</option>
+
+                <option value="4">Medicina</option>
+
+                <option value="5">Bellas artes</option>
+
+                <option value="6">Enfermeria</option>
+
+                <option value="7">Historia</option>
+
+                <option value="8">Ingenieria mecánica</option>
+
+
+            </select>
+        </div>
+
+
+
+        <div class="form-outline mb-4">
+            <label class="form-label" for="curso">Grado </label>
+            <Select class="form-control form-control-lg" id="curso" name="Grado" required>
+
+                <option value="" >--Escoge el curso que estas cursando actualmente --</option>
+
+                <option value="1">Primero</option>
+
+                <option value="2">Segundo</option>
+
+                <option value="3">Tercero</option>
+
+                <option value="4">Cuarto</option>
+
+            </select>
+        </div>
+
+        <input type="submit"  class="btn btn-primary btn-block mb-4" value="Completar registro" />
+    </form>
+</div>
+</body>
+</html>

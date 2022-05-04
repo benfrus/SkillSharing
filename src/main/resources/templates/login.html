@@ -20,7 +20,7 @@
 
     <div class="form-outline mb-4">
     <label class="form-label" for="exampleInputEmail1">E-mail </label>
-    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"  th:field="*{username}"/>
+    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"  th:field="*{username}" required/>
     <small id="emailHelp" class="form-text text-muted">Utiliza tu dirección de correo universitario</small>
 </div>
 
@@ -29,7 +29,7 @@
     <p>
         <div class="form-group">
     <label class="form-label" for="examplePassword1">Password </label>
-    <input class="form-control form-control-lg" type="password" id ="examplePassword1" th:field="*{password}"/>
+    <input class="form-control form-control-lg" type="password" id ="examplePassword1" th:field="*{password}" required/>
         </div>
     <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
     </p>
