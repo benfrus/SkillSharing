@@ -12,14 +12,14 @@
 <h2 class="fw-normal mb-7 pb-7" style="letter-spacing: 3px;">¡Pasa a formar parte de nuestra comunidad!</h2>
 <div class="d-inline-flex p-2 bd-highlight">
     <form action="#" th:action="@{/signin}"
-          th:object="${user}" method="post">
+          th:object="${alumno}" method="post">
 
 
 
 
         <div class="form-outline mb-4">
             <label class="form-label" for="idestudiante">Código de estudiante </label>
-            <input type="text" class="form-control form-control-lg" id="idestudiante" required/>
+            <input type="text" class="form-control form-control-lg" id="idestudiante" th:field="*{id_estudiante}"required/>
             <small id="estudianteHelp" class="form-text text-muted">Introduce tu alXXXXXX</small>
         </div>
 
@@ -32,7 +32,7 @@
 
         <div class="form-outline mb-4">
             <label class="form-label" for="usuario">Usuario </label>
-            <input type="text" class="form-control form-control-lg" id="usuario" required/>
+            <input type="text" class="form-control form-control-lg" id="usuario" th:field="*{nombre_usuario}"required/>
             <small id="usuarioHelp" class="form-text text-muted">El usuario debe contener como máximo 8 carácteres</small>
         </div>
 
@@ -40,7 +40,7 @@
             <div class="form-outline mb-4">
                 <div class="form-group">
                     <label class="form-label" for="examplePassword1">Contraseña </label>
-                    <input class="form-control form-control-lg" type="password" id ="examplePassword1" th:field="*{password}" required/>
+                    <input class="form-control form-control-lg" type="password" id ="examplePassword1" th:field="*{contraseña}" required/>
                 </div>
         </div>
 
@@ -49,30 +49,30 @@
 
         <div class="form-outline mb-4">
             <label class="form-label" for="nombre">Nombre </label>
-            <input type="text" class="form-control form-control-lg" id="nombre" required/>
+            <input type="text" class="form-control form-control-lg" id="nombre" th:field="*{nombre}"required/>
         </div>
 
 
         <div class="form-outline mb-4">
             <label class="form-label" for="apellidos">Apellidos </label>
-            <input type="text" class="form-control form-control-lg" id="apellidos" required/>
+            <input type="text" class="form-control form-control-lg" id="apellidos" th:field="*{apellidos}"required/>
     </div>
 
 
 
     <div class="form-outline mb-4">
         <label class="form-label" for="exampleInputEmail1">E-mail </label>
-        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"  th:field="*{username}" required/>
+        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"  th:field="*{email}" required/>
         <small id="emailHelp" class="form-text text-muted">Utiliza tu dirección de correo universitario</small>
     </div>
 
-    <div class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+
 
 
 
         <div class="form-outline mb-4">
             <label class="form-label" for="grado">Grado </label>
-            <Select class="form-control form-control-lg" id="grado" name="Grado" required>
+            <Select class="form-control form-control-lg" id="grado" name="Grado" th:field="*{grado}"required>
 
                 <option value="">--Escoge el grado que estas cursando --</option>
 
@@ -99,18 +99,18 @@
 
 
         <div class="form-outline mb-4">
-            <label class="form-label" for="curso">Grado </label>
-            <Select class="form-control form-control-lg" id="curso" name="Grado" required>
+            <label class="form-label" for="curso">Curso </label>
+            <Select class="form-control form-control-lg" id="curso" name="Curso" th:field="*{curso}"required>
 
                 <option value="" >--Escoge el curso que estas cursando actualmente --</option>
 
-                <option value="1">Primero</option>
+                <option value="1">1</option>
 
-                <option value="2">Segundo</option>
+                <option value="2">2</option>
 
-                <option value="3">Tercero</option>
+                <option value="3">3</option>
 
-                <option value="4">Cuarto</option>
+                <option value="4">4</option>
 
             </select>
         </div>
