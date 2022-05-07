@@ -11,31 +11,25 @@
 </nav>
 <body class="text-center">
 <p></p>
+
 <h1 class="fw-normal mb-7 pb-7" style="letter-spacing: 3px;">Login</h1>
 <div class="d-inline-flex p-2 bd-highlight">
 
-<form action="#" th:action="@{/login}"
-      th:object="${user}" method="post">
-    <p>
 
-    <div class="form-outline mb-4">
-    <label class="form-label" for="exampleInputEmail1">E-mail </label>
-    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1"  th:field="*{username}" required/>
-    <small id="emailHelp" class="form-text text-muted">Utiliza tu dirección de correo universitario</small>
-</div>
-
-    <div class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
-    </p>
-    <p>
-        <div class="form-group">
-    <label class="form-label" for="examplePassword1">Password </label>
-    <input class="form-control form-control-lg" type="password" id ="examplePassword1" th:field="*{password}" required/>
-        </div>
-    <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
-    </p>
-    <input type="submit"  class="btn btn-primary btn-block mb-4" value="Acceder" />
-
-</form>
+    <form action="#" th:action="@{/login}"
+          th:object="${user}" method="post">
+        <p>
+            <label>Nom d'usuari:</label>
+            <input class="form_control" type="text" th:field="*{username}"/>
+        <div class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+        </p>
+        <p>
+            <label>Contrasenya:</label>
+            <input class="form_control" type="password" th:field="*{password}"/>
+        <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+        </p>
+        <input type="submit" value="Accedir" />
+    </form>
 </div>
 </body>
 </html>

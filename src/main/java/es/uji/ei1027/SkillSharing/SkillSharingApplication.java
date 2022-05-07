@@ -21,14 +21,14 @@ public class SkillSharingApplication {
 
 		}
 
-/*	// Funció principal
+/*	 Funció principal
     public void run(String... strings) throws Exception {
 		log.info("Ací va el meu codi");
 	}
 
 	private JdbcTemplate jdbcTemplate;
 
-	// Crea el jdbcTemplate a partir del DataSource que hem configurat
+	 Crea el jdbcTemplate a partir del DataSource que hem configurat
 	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
@@ -53,6 +53,7 @@ public class SkillSharingApplication {
 					"SELECT * FROM colaboracion WHERE id_colab='0'",
 					new ColaboracionRowMapper());
 				log.info(colaboraciones.toString());
+
 
 
 

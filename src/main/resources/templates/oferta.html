@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>EI1027</title>
+  <meta charset="UTF-8">
+  <!-- Afegim una fulla d’estil (Bootstrap) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand 5px">Skill Sharing</a>
+</nav>
+<body class="bg-light">
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <h2>Nueva oferta</h2>
+    </div>
+    <div class="row g-5">
+      <div class="col-md-8 col-lg-12">
+          <div class="row g-3">
+
+            <div class="col-sm-12">
+              <label for="descripcion" class="form-label">Descripción</label>
+              <textarea class="form-control" id="descripcion" rows="3"></textarea>
+            </div>
+
+            <div class="col-6 py-4">
+              <label for="habilidad" class="form-label form-select-lg">Habilidad</label>
+              <select id="habilidad" class="form-select form-select-lg mb-3">
+                <option selected>Selecciona una</option>
+                <option>...</option>
+              </select>
+            </div>
+
+            <div class="col-6 py-4">
+              <label for="duracion" class="form-label form-select-lg">Duracion de la oferta</label>
+              <select id="duracion" class="form-select form-select-lg mb-3">
+                <option selected>Selecciona la duración</option>
+                <option>1 mes</option>
+                <option>2 meses</option>
+                <option>3 meses</option>
+                <option>4 meses</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Aceptar</button>
+            </div>
+
+          </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

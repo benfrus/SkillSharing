@@ -26,7 +26,7 @@ public class ColaboracionDao {
     /* Afegeix la colaboracion a la base de dades */
     public void addColaboracion(Colaboracion colaboracion) {
         jdbcTemplate.update("INSERT INTO colaboracion VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                colaboracion.getId_colab(), colaboracion.getFecha_inicio(), colaboracion.getFecha_fin(),
+                colaboracion.getId_colab(),colaboracion.getFecha_inicio(), colaboracion.getFecha_fin(),
                 colaboracion.getHoras_totales(), colaboracion.getEvaluacion(), colaboracion.getComentario(),
                 colaboracion.getId_oferta(), colaboracion.getId_pet(), colaboracion.getEstado());
 
@@ -39,7 +39,7 @@ public class ColaboracionDao {
     }
 
     /* Actualitza els atributs del colaboracion
-       (excepte el id, que és la clau primària) */
+       (excepte el nom, que és la clau primària) */
     public void updateColaboracion(Colaboracion colaboracion) {
         jdbcTemplate.update("UPDATE colaboracion SET  evaluacion = ?, comenatrio = ?, estado = ? WHERE id_colab = ? ",
                 colaboracion.getEvaluacion(), colaboracion.getComentario(), colaboracion.getEstado(),
@@ -49,7 +49,8 @@ public class ColaboracionDao {
     /* Obté el colaboracion amb el id donat. Torna null si no existeix. */
     public Colaboracion getColaboracion(String id_colab) {
         try {
-            return jdbcTemplate.queryForObject("SELECT * FROM colaboracion WHERE id_colab = ?",new ColaboracionRowMapper(), id_colab);
+            return jdbcTemplate.queryForObject("SELECT * FROM colaboracion WHERE id_colab = ?",
+                    new es.uji.ei1027.SkillSharing.dao.ColaboracionRowMapper(), id_colab);
         }
         catch(EmptyResultDataAccessException e) {
             return null;
@@ -60,7 +61,7 @@ public class ColaboracionDao {
     public List<Colaboracion> getColaboraciones() {
         try {
             return jdbcTemplate.query("SELECT * FROM colaboracion",
-                    new ColaboracionRowMapper());
+                    new es.uji.ei1027.SkillSharing.dao.ColaboracionRowMapper());
         }
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Colaboracion>();

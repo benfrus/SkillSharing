@@ -9,36 +9,13 @@
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <a class="navbar-brand">Skill Sharing</a>
   <span>
-     <form action="/login" >
-        <input type="submit" value="Inicia Sesión" class="btn btn-primary" />
-    </form>
-
-    <p></p>
-     <form action="/clubesportiu/templates/Inicio_sesion.html" >
-        <input type="submit" value="Registrate" class="btn btn-light" />
-    </form>
+      <a class="btn btn-light" href="/sign in" role="button">Registrarse</a>
+      <a class="btn btn-primary" href="/login" role="button">Iniciar Sesión</a>
   </span>
 </nav>
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>¡Inicia Sesión!</strong> Si quieres colborar inicia sesión o regístrate.
-</div>
-  <h2>Bienvenido/a esta es la lista de colaboraciones</h2>
- <li><a href="/colaboracion/lista">Gestión de Colaboradores</a></li>
-<tbody>
-<tr th:each="colaboracion: ${colaboraciones}">
-    <td th:text="${colaboracion.id_colab}"></td>
-    <td th:text="${colaboracion.fecha_inicio}"></td>
-    <td th:text="${colaboracion.fecha_fin}"></td>
-    <td th:text="${colaboracion.horas_totales}"></td>
-    <td th:text="${colaboracion.evaluacion}"></td>
-    <td th:text="${colaboracion.comentario}"></td>
-    <td th:text="${colaboracion.id_oferta}"></td>
-    <td th:text="${colaboracion.id_pet}"></td>
-    <td th:text="${colaboracion.estado}"></td>
-</tr>
-</tbody>
-
-  </ul>
+  <h1>Bienvenido/a Skill Sharing</h1>
+<h4>Un portal web donde la comunidad de la Universitat Jaume I colaboran para mejorar.</h4>
+<a class="btn btn-primary" href="/colaboracion/lista" role="button">Comenzar</a>
 </body>
 </html>
 

@@ -22,25 +22,33 @@ public class EstudianteDao {
     /* Añadimos el estudiante a la BBDD */
 
     public void addEstudiante (Estudiante estudiante){
-        jdbcTemplate.update("INSERT INTO Estudiante VALUES(?, ?, ?, ?, ?, ?, ?, ?)", estudiante.getId_estudiante(), estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getGrado());
+        jdbcTemplate.update("INSERT INTO estudiante VALUES(?, ?, ?, ?, ?, ?, ?, ?)", estudiante.getId_estudiante(), estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getGrado());
     }
 
     /* Eliminamos al estudiante de la BBDD */
 
     public void deleteEstudiante(Estudiante estudiante){
-        jdbcTemplate.update ("DELETE FROM Estudiante WHERE id_estudiante= ?", estudiante.getId_estudiante());
+        jdbcTemplate.update ("DELETE FROM estudiante WHERE id_estudiante= ?", estudiante.getId_estudiante());
     }
 
     /* Actualizar los datos del estudiante, excepto su id que es la clave primaria */
 
     public void updateEstudiante(Estudiante estudiante){
-        jdbcTemplate.update("UPDATE Estudiante SET nombre_usuario= ?, contraseña= ?, nombre= ?, apellidos= ?, email= ?, grado= ?, curso= ?", estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getCurso());
+        jdbcTemplate.update("UPDATE estudiante SET nombre_usuario= ?, contraseña= ?, nombre= ?, apellidos= ?, email= ?, grado= ?, curso= ?", estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getCurso());
     }
 
     /* Devolver los datos de un estudiante a partir de su id. Devuelve nulo si no existe en la BBDD */
     public Estudiante getEstudiante (String id_estudiante){
         try {
-            return jdbcTemplate.queryForObject("SELECT * FROM Estudiante WHERE id_estudiante= ?", new EstudianteRowMapper(), id_estudiante);
+            return jdbcTemplate.queryForObject("SELECT * FROM estudiante WHERE id_estudiante= ?", new EstudianteRowMapper(), id_estudiante);
+        }catch(EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
+    public Estudiante getEstudianteByUser (String user) {
+        try {
+            return jdbcTemplate.queryForObject("SELECT * FROM estudiante WHERE nombre_usuario= ?", new es.uji.ei1027.SkillSharing.dao.EstudianteRowMapper(), user);
         }catch(EmptyResultDataAccessException e) {
             return null;
         }
@@ -50,7 +58,7 @@ public class EstudianteDao {
 
     public List<Estudiante> getEstudiantesGrado(String grado){
         try{
-            return jdbcTemplate.query("SELECT * FROM Estudiante WHERE grado= ?", new EstudianteRowMapper(), grado);
+            return jdbcTemplate.query("SELECT * FROM estudiante WHERE grado= ?", new EstudianteRowMapper(), grado);
         }
          catch(EmptyResultDataAccessException e) {
             return new ArrayList<Estudiante>();
@@ -61,7 +69,7 @@ public class EstudianteDao {
 
     public List<Estudiante> getEstudiantes () {
         try{
-            return  jdbcTemplate.query("SELECT * FROM Estudiante", new EstudianteRowMapper());
+            return  jdbcTemplate.query("SELECT * FROM estudiante", new es.uji.ei1027.SkillSharing.dao.EstudianteRowMapper());
 
         } catch(EmptyResultDataAccessException e){
             return new ArrayList<Estudiante>();

@@ -3,6 +3,7 @@ package es.uji.ei1027.SkillSharing.controller;
 
 import javax.servlet.http.HttpSession;
 
+import es.uji.ei1027.SkillSharing.model.Estudiante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,7 +62,7 @@ public class LoginController {
         // intentant carregar les dades de l'usuari
         user = userDao.loadUserByUsername(user.getUsername(), user.getPassword());
         if (user == null) {
-            bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta");
+            bindingResult.rejectValue("password", "badpw", "Contraseña incorrecta");
             return "login";
         }
         // Autenticats correctament.
@@ -69,7 +70,7 @@ public class LoginController {
         session.setAttribute("user", user);
 
         // Torna a la pàgina principal
-        return "redirect:/";
+        return "home_estudiante";
     }
 
     @RequestMapping("/logout")

@@ -1,18 +1,7 @@
 package es.uji.ei1027.SkillSharing.model;
 
 public class Estudiante {
-    String id_estudiante;
-    String nombre_usuario;
-    String contraseña;
-    String nombre;
-    String apellidos;
-    String email;
-    String grado;
-    int curso;
 
-    public Estudiante(){
-
-    }
 
     public String getId_estudiante() {
         return id_estudiante;
@@ -80,7 +69,7 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "estudiante{" +
+        return "Estudiante{" +
                 "id_estudiante='" + id_estudiante + '\'' +
                 ", nombre_usuario='" + nombre_usuario + '\'' +
                 ", contraseña='" + contraseña + '\'' +
@@ -91,4 +80,18 @@ public class Estudiante {
                 ", curso=" + curso +
                 '}';
     }
+
+    String id_estudiante;
+    String nombre_usuario;
+    String contraseña;
+    String nombre;
+    String apellidos;
+    String email;
+    String grado;
+    int curso;
+
+    public Estudiante() {
+    }
+
+
 }
