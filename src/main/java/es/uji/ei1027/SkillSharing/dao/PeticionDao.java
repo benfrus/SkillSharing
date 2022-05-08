@@ -58,6 +58,14 @@ public class PeticionDao {
             return new ArrayList<Peticion>();
         }
     }
+    public List<Peticion> getPeticionesByUser(String id_estudiante){
+        try{
+            return jdbcTemplate.query("SELECT * FROM peticion WHERE id_estudiante=?", new PeticionRowMapper(), id_estudiante);
+        }
+        catch(EmptyResultDataAccessException e) {
+            return new ArrayList<Peticion>();
+        }
+    }
 
 
 }

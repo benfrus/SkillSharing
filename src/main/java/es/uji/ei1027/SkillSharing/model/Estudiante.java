@@ -67,6 +67,11 @@ public class Estudiante {
         this.curso = curso;
     }
 
+    public String getNombrefromApellidos() {
+        int index = apellidos.indexOf(",");
+        return apellidos.substring(0, index);
+    }
+
     @Override
     public String toString() {
         return "Estudiante{" +
