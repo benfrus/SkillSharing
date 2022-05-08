@@ -16,7 +16,7 @@
         <table>
             <tr>
                 <td><label>DNI</label></td>
-                <td><input type="text" th:field="*{nombre}" /></td> ③
+                <td><input type="text" th:field="*{nombre}" /></td>
             </tr>
             <tr>
                 <td><label>Nombre y Apellidos</label></td>
@@ -25,10 +25,11 @@
             <tr>
                 <td><label>Usuario</label></td>
                 <td><input type="text" th:field="*{nombre_usuario}" /></td>
+                <div class="error" th:if="${#fields.hasErrors('nombre_usuario')}" th:errors="*{nombre_usuario}"></div>
             </tr>
             <tr>
                 <td><label>Contraseña</label></td>
-                <td><input type="text" th:field="*{contraseña}" /></td>
+                <td><input type="password" th:field="*{contraseña}" /></td>
             </tr>
             <tr>
                 <td><label>Grado</label></td>

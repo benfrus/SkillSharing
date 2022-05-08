@@ -65,7 +65,9 @@ public class LoginController {
 
         //Comprobamos que id_estudiante no aparezca en la base de datos
         /*Estudiante registrado = estudianteDao.getEstudiante(estudiante.getId_estudiante());
-        if (registrado == null){
+        if (registrado != null){
+            System.out.println("El usuario registrado ya existe");
+            bindingResult.rejectValue("nombre_usuario", "yaexiste", "Este usuario ya existe");
             return "registrarse";
         }*/
         //Añadimos el estudiante a la base de datos

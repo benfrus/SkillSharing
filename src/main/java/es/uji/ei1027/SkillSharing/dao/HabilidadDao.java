@@ -45,6 +45,14 @@ public class HabilidadDao {
             return null;
         }
     }
+    // Devuelve habilidad por nombre
+    public Habilidad getHabilidadByNombre (String nombre){
+        try {
+            return jdbcTemplate.queryForObject("SELECT * FROM habilidad WHERE nombre= ?", new HabilidadRowMapper(), nombre);
+        }catch(EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
 
     /* Devolver los datos de una serie de estudiantes a partir del grado que cursan */
 
