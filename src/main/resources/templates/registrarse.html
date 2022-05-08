@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>EI1027</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">Skill Sharing</a>
+</nav>
+<body class="text-center">
+<h2 class="fw-normal mb-7 pb-7" style="letter-spacing: 3px;">¡Pasa a formar parte de nuestra comunidad!</h2>
+<div class="d-inline-flex p-2 bd-highlight">
+    <form action="#" th:action="@{/registrarse}"
+          th:object="${nuevo_estudiante}" method="post">
+        <table>
+            <tr>
+                <td><label>DNI</label></td>
+                <td><input type="text" th:field="*{nombre}" /></td> ③
+            </tr>
+            <tr>
+                <td><label>Nombre y Apellidos</label></td>
+                <td><input type="text" th:field="*{apellidos}" /></td>
+            </tr>
+            <tr>
+                <td><label>Usuario</label></td>
+                <td><input type="text" th:field="*{nombre_usuario}" /></td>
+            </tr>
+            <tr>
+                <td><label>Contraseña</label></td>
+                <td><input type="text" th:field="*{contraseña}" /></td>
+            </tr>
+            <tr>
+                <td><label>Grado</label></td>
+                <td><input type="text" th:field="*{grado}" /></td>
+            </tr>
+            <tr>
+                <td><label>Curso</label></td>
+                <td><input type="number" th:field="*{curso}" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Registrarse" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

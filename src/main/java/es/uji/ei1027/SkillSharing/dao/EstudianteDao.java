@@ -22,7 +22,7 @@ public class EstudianteDao {
     /* Añadimos el estudiante a la BBDD */
 
     public void addEstudiante (Estudiante estudiante){
-        jdbcTemplate.update("INSERT INTO estudiante VALUES(?, ?, ?, ?, ?, ?, ?, ?)", estudiante.getId_estudiante(), estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getGrado());
+        jdbcTemplate.update("INSERT INTO estudiante VALUES(?, ?, ?, ?, ?, ?, ?, ?)", estudiante.getId_estudiante(), estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getCurso());
     }
 
     /* Eliminamos al estudiante de la BBDD */

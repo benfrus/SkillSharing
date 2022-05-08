@@ -17,10 +17,11 @@ public class ControladorRegistro {
     @Autowired
     private EstudianteDao estudianteDao;
 
-    public String signin(Model model) {
-        model.addAttribute("alumno", new Estudiante());
-        return "signin";
-    }
+    /*@RequestMapping("/registrarse")
+    public String registrarse(Model model) {
+        //model.addAttribute("alumno", new Estudiante());
+        return "registrarse";
+    }*/
 
     @RequestMapping(value="/signin", method= RequestMethod.POST)
     public String checkLogin(@ModelAttribute("alumno") Estudiante estudiante,

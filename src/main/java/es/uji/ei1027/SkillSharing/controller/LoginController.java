@@ -3,6 +3,7 @@ package es.uji.ei1027.SkillSharing.controller;
 
 import javax.servlet.http.HttpSession;
 
+import es.uji.ei1027.SkillSharing.dao.EstudianteDao;
 import es.uji.ei1027.SkillSharing.model.Estudiante;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,11 +44,38 @@ class UserValidator implements Validator {
 public class LoginController {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private EstudianteDao estudianteDao;
 
     @RequestMapping("/login")
     public String login(Model model) {
         model.addAttribute("user", new UserDetails());
         return "login";
+    }
+
+    @RequestMapping("registrarse")
+    public String registrarse(Model model) {
+        model.addAttribute("nuevo_estudiante", new Estudiante());
+        return "registrarse";
+    }
+
+    @RequestMapping(value="/registrarse", method= RequestMethod.POST)
+    public String checkLogin(@ModelAttribute("nuevo_estudiante") Estudiante estudiante,
+                             BindingResult bindingResult, HttpSession session) {
+
+        //Comprobamos que id_estudiante no aparezca en la base de datos
+        /*Estudiante registrado = estudianteDao.getEstudiante(estudiante.getId_estudiante());
+        if (registrado == null){
+            return "registrarse";
+        }*/
+        //Añadimos el estudiante a la base de datos
+        estudiante.setId_estudiante(estudiante.getNombre_usuario());
+        estudiante.setEmail(estudiante.getNombre_usuario() + "@uji.es");
+
+        estudianteDao.addEstudiante(estudiante);
+
+        // Torna a la pàgina principal
+        return "registrarse_exito";
     }
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
@@ -68,7 +96,7 @@ public class LoginController {
         // Autenticats correctament.
         // Guardem les dades de l'usuari autenticat a la sessió
         session.setAttribute("user", user);
-        return "registro_exito";
+        return "inicio_sesion_exito";
     }
 
     @RequestMapping("/logout")
