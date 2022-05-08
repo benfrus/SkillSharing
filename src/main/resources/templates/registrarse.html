@@ -16,27 +16,27 @@
         <table>
             <tr>
                 <td><label>DNI</label></td>
-                <td><input type="text" th:field="*{nombre}" /></td> ③
+                <td><input type="text" th:field="*{nombre}" required /></td> ③
             </tr>
             <tr>
                 <td><label>Nombre y Apellidos</label></td>
-                <td><input type="text" th:field="*{apellidos}" /></td>
+                <td><input type="text" th:field="*{apellidos}" required/></td>
             </tr>
             <tr>
                 <td><label>Usuario</label></td>
-                <td><input type="text" th:field="*{nombre_usuario}" /></td>
+                <td><input type="text" th:field="*{nombre_usuario}" required/></td>
             </tr>
             <tr>
                 <td><label>Contraseña</label></td>
-                <td><input type="text" th:field="*{contraseña}" /></td>
+                <td><input type="text" th:field="*{contraseña}" required/></td>
             </tr>
             <tr>
                 <td><label>Grado</label></td>
-                <td><input type="text" th:field="*{grado}" /></td>
+                <td><input type="text" th:field="*{grado}" required/></td>
             </tr>
             <tr>
                 <td><label>Curso</label></td>
-                <td><input type="number" th:field="*{curso}" /></td>
+                <td><input type="number" th:field="*{curso}" required/></td>
             </tr>
             <tr>
                 <td colspan="2"><input type="submit" value="Registrarse" /></td>
