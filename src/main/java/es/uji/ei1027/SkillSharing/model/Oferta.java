@@ -1,16 +1,25 @@
 package es.uji.ei1027.SkillSharing.model;
 
+import org.apache.tomcat.jni.Local;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+
+
 public class Oferta {
+
     private String id_oferta;
-    private String fecha_Inicio;
-    private String fecha_Fin;
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    private LocalDate fecha_Inicio;
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    private LocalDate fecha_Fin;
     private String descripcion;
     private String id_Habilidad;
     private String id_Estudiante;
     public Oferta(){
         super();
     }
-    public Oferta(String id_oferta, String fecha_Inicio, String fecha_Fin, String descripcion, String id_Habilidad, String id_Estudiante) {
+    public Oferta(String id_oferta, LocalDate fecha_Inicio, LocalDate fecha_Fin, String descripcion, String id_Habilidad, String id_Estudiante) {
         this.id_oferta = id_oferta;
         this.fecha_Inicio = fecha_Inicio;
         this.fecha_Fin = fecha_Fin;
@@ -24,11 +33,11 @@ public class Oferta {
     }
 
     public String getFecha_Inicio() {
-        return fecha_Inicio;
+        return fecha_Inicio.toString();
     }
 
     public String getFecha_Fin() {
-        return fecha_Fin;
+        return fecha_Fin.toString();
     }
 
     public String getDescripcion() {
@@ -47,11 +56,11 @@ public class Oferta {
         this.id_oferta = id_oferta;
     }
 
-    public void setFecha_Inicio(String fecha_Inicio) {
+    public void setFecha_Inicio(LocalDate fecha_Inicio) {
         this.fecha_Inicio = fecha_Inicio;
     }
 
-    public void setFecha_Fin(String fecha_Fin) {
+    public void setFecha_Fin(LocalDate   fecha_Fin) {
         this.fecha_Fin = fecha_Fin;
     }
 
