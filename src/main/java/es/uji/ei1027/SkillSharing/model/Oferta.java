@@ -1,7 +1,7 @@
 package es.uji.ei1027.SkillSharing.model;
 
 public class Oferta {
-    private String id_Oferta;
+    private String id_oferta;
     private String fecha_Inicio;
     private String fecha_Fin;
     private String descripcion;
@@ -10,8 +10,8 @@ public class Oferta {
     public Oferta(){
         super();
     }
-    public Oferta(String id_Oferta, String fecha_Inicio, String fecha_Fin, String descripcion, String id_Habilidad, String id_Estudiante) {
-        this.id_Oferta = id_Oferta;
+    public Oferta(String id_oferta, String fecha_Inicio, String fecha_Fin, String descripcion, String id_Habilidad, String id_Estudiante) {
+        this.id_oferta = id_oferta;
         this.fecha_Inicio = fecha_Inicio;
         this.fecha_Fin = fecha_Fin;
         this.descripcion = descripcion;
@@ -19,8 +19,8 @@ public class Oferta {
         this.id_Estudiante = id_Estudiante;
     }
 
-    public String getId_Oferta() {
-        return id_Oferta;
+    public String getId_oferta() {
+        return id_oferta;
     }
 
     public String getFecha_Inicio() {
@@ -43,8 +43,8 @@ public class Oferta {
         return id_Estudiante;
     }
 
-    public void setId_Oferta(String id_Oferta) {
-        this.id_Oferta = id_Oferta;
+    public void setId_oferta(String id_oferta) {
+        this.id_oferta = id_oferta;
     }
 
     public void setFecha_Inicio(String fecha_Inicio) {
@@ -70,7 +70,7 @@ public class Oferta {
     @Override
     public String toString() {
         return "oferta{" +
-                "id_Oferta='" + id_Oferta + '\'' +
+                "id_Oferta='" + id_oferta + '\'' +
                 ", fecha_Inicio='" + fecha_Inicio + '\'' +
                 ", fecha_Fin='" + fecha_Fin + '\'' +
                 ", descripcion='" + descripcion + '\'' +

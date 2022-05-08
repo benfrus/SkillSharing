@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home estudiante</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">Skill Sharing</a>
+
+</nav>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Descripción</th>
+        <th scope="col">Habilidad</th>
+        <th scope="col">Fecha fin</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="oferta:${ofertas}">
+        <td th:text="${oferta.descripcion}"></td>
+        <td th:text="${oferta.id_Habilidad}"></td>
+        <td th:text="${oferta.fecha_Fin}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

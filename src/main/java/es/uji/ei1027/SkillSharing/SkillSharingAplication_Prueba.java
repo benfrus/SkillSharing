@@ -6,8 +6,10 @@ import java.util.logging.Logger;
 import es.uji.ei1027.SkillSharing.dao.ColaboracionDao;
 import es.uji.ei1027.SkillSharing.dao.EstudianteDao;
 import es.uji.ei1027.SkillSharing.dao.EstudianteRowMapper;
+import es.uji.ei1027.SkillSharing.dao.OfertaDao;
 import es.uji.ei1027.SkillSharing.model.Colaboracion;
 import es.uji.ei1027.SkillSharing.model.Estudiante;
+import es.uji.ei1027.SkillSharing.model.Oferta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -36,6 +38,8 @@ import javax.sql.DataSource;
     ColaboracionDao colaboracionDao;
     @Autowired
     EstudianteDao estudianteDao;
+    @Autowired
+    OfertaDao ofertaDao;
     public void setDataSource(DataSource dataSource) {
         jdbcTemplate = new JdbcTemplate(dataSource);
     }
@@ -58,17 +62,24 @@ import javax.sql.DataSource;
                 log.info(e.toString());
 
             }*/
-        log.info("Dades de al000000");
+        /*log.info("Dades de al000000");
         Estudiante n = estudianteDao.getEstudiante("al000000");
         log.info(n.toString());
 
-       /* for (Estudiante e: estudianteDao.getEstudiantes()) {
+       *//* for (Estudiante e: estudianteDao.getEstudiantes()) {
             log.info(e.toString());
-        }*/
+        }*//*
         log.info("Dades de al000000");
         Estudiante w = estudianteDao.getEstudianteByUser("al000000");
-        log.info(w.toString());
-
+        log.info(w.toString());*/
+        log.info("Dades de ofertas");
+        Oferta n = ofertaDao.getOferta("0");
+        log.info(n.toString());
+        log.info("peticion ofertas por usuario");
+        List<Oferta> ofertas= ofertaDao.getOfertaByUser("al000000");
+        for (Oferta o: ofertas) {
+            log.info(o.toString());
+        }
 
 
 

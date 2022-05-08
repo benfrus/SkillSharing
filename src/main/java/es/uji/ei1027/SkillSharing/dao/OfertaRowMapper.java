@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public final class OfertaRowMapper implements RowMapper<Oferta> {
     public Oferta mapRow(ResultSet rs, int rowNum) throws SQLException {
         Oferta oferta = new Oferta();
-        oferta.setId_Oferta(rs.getString("id_oferta"));
+        oferta.setId_oferta(rs.getString("id_oferta"));
         oferta.setFecha_Inicio(rs.getString("fecha_inicio"));
         oferta.setFecha_Fin(rs.getString("fecha_fin"));
         oferta.setDescripcion(rs.getString("descripcion"));
