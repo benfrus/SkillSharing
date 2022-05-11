@@ -74,6 +74,7 @@ public class LoginController {
         estudiante.setId_estudiante(estudiante.getNombre_usuario());
         estudiante.setEmail(estudiante.getNombre_usuario() + "@uji.es");
         estudiante.setRol("estudiante");
+        estudiante.setEstado("activo");
         estudianteDao.addEstudiante(estudiante);
 
         // Torna a la pàgina principal

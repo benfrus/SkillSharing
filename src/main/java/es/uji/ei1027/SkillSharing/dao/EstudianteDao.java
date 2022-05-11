@@ -22,7 +22,7 @@ public class EstudianteDao {
     /* Añadimos el estudiante a la BBDD */
 
     public void addEstudiante (Estudiante estudiante){
-        jdbcTemplate.update("INSERT INTO estudiante VALUES(?, ?, ?, ?, ?, ?, ?, ?,?)", estudiante.getId_estudiante(), estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getCurso(),estudiante.getRol());
+        jdbcTemplate.update("INSERT INTO estudiante VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", estudiante.getId_estudiante(), estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getCurso(),estudiante.getRol(),estudiante.getEstado());
     }
 
     /* Eliminamos al estudiante de la BBDD */
@@ -34,7 +34,7 @@ public class EstudianteDao {
     /* Actualizar los datos del estudiante, excepto su id que es la clave primaria */
 
     public void updateEstudiante(Estudiante estudiante){
-        jdbcTemplate.update("UPDATE estudiante SET nombre_usuario= ?, contraseña= ?, nombre= ?, apellidos= ?, email= ?, grado= ?, curso= ?,rol=?", estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getCurso(),estudiante.getRol());
+        jdbcTemplate.update("UPDATE estudiante SET nombre_usuario= ?, contraseña= ?, nombre= ?, apellidos= ?, email= ?, grado= ?, curso= ?,rol=?, estado=?", estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getCurso(),estudiante.getRol(),estudiante.getEstado());
     }
 
     /* Devolver los datos de un estudiante a partir de su id. Devuelve nulo si no existe en la BBDD */

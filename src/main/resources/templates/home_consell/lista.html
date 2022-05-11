@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <title>Home estudiante</title>
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
 </head>
 <body>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand">Skill Sharing</a>
+  <span>
+        <p>¡Hola,  <span th:text="${estudiante.getNombre()}"></span>! <a href="/logout">Salir</a></p>
 
+    </span>
+
+</nav>
+<div class="container py-4">
+  <div class="row">
+    <div class="col">
+      <h2>Lista de habilidades</h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Nivel</th>
+          <th scope="col">Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="habilidad:${habilidades}">
+          <td th:text="${oferta.descripcion}"></td>
+          <td th:text="${oferta.id_Habilidad}"></td>
+          <td th:text="${oferta.fecha_Fin}"></td>
+          <td>
+            <a  type="button" class="btn btn-outline-warning"><i class="bi bi-pencil"></i></a>
+          </td>
+          <td>
+            <a type="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <a href="oferta" class="btn btn-primary">Nueva oferta</a>
+    </div>
+    <div class="col">
+      <h2>Estudiantes registrados</h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Usuario</th>
+          <th scope="col">Nombre y apellidos</th>
+          <th scope="col">Grado</th>
+          <th scope="col">Curso</th>
+        </tr>
+        </thead>
+       <!-- <tbody>
+        <tr th:each="peticion:${peticiones}">
+          <td th:text="${peticion.descripcion}"></td>
+          <td th:text="${peticion.id_Habilidad}"></td>
+          <td th:text="${peticion.fecha_Fin}"></td>
+          <td>
+            <a  type="button" class="btn btn-outline-warning"><i class="bi bi-pencil"></i></a>
+          </td>
+          <td>
+            <a type="button" class="btn btn-outline-danger"><i class="bi bi-trash"></i></a>
+          </td>
+        </tr>
+        </tbody>-->
+      </table>
+    </div>
+  </div>
+</div>
 </body>
 </html>

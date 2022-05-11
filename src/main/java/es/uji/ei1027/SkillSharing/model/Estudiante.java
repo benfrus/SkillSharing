@@ -3,6 +3,22 @@ package es.uji.ei1027.SkillSharing.model;
 public class Estudiante {
 
 
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "id_estudiante='" + id_estudiante + '\'' +
+                ", nombre_usuario='" + nombre_usuario + '\'' +
+                ", contraseña='" + contraseña + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", email='" + email + '\'' +
+                ", grado='" + grado + '\'' +
+                ", curso=" + curso +
+                ", rol='" + rol + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
+    }
+
     public String getId_estudiante() {
         return id_estudiante;
     }
@@ -75,19 +91,12 @@ public class Estudiante {
         this.rol = rol;
     }
 
-    @Override
-    public String toString() {
-        return "Estudiante{" +
-                "id_estudiante='" + id_estudiante + '\'' +
-                ", nombre_usuario='" + nombre_usuario + '\'' +
-                ", contraseña='" + contraseña + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", email='" + email + '\'' +
-                ", grado='" + grado + '\'' +
-                ", curso=" + curso +
-                ", rol='" + rol + '\'' +
-                '}';
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     String id_estudiante;
@@ -99,6 +108,7 @@ public class Estudiante {
     String grado;
     int curso;
     String rol;
+    String estado;
 
     public Estudiante() {
     }
