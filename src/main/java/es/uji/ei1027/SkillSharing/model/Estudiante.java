@@ -67,9 +67,12 @@ public class Estudiante {
         this.curso = curso;
     }
 
-    public String getNombrefromApellidos() {
-        int index = apellidos.indexOf(",");
-        return apellidos.substring(0, index);
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     @Override
@@ -83,6 +86,7 @@ public class Estudiante {
                 ", email='" + email + '\'' +
                 ", grado='" + grado + '\'' +
                 ", curso=" + curso +
+                ", rol='" + rol + '\'' +
                 '}';
     }
 
@@ -94,6 +98,7 @@ public class Estudiante {
     String email;
     String grado;
     int curso;
+    String rol;
 
     public Estudiante() {
     }

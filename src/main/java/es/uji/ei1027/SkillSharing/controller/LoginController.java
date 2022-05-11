@@ -73,7 +73,7 @@ public class LoginController {
         //Añadimos el estudiante a la base de datos
         estudiante.setId_estudiante(estudiante.getNombre_usuario());
         estudiante.setEmail(estudiante.getNombre_usuario() + "@uji.es");
-
+        estudiante.setRol("estudiante");
         estudianteDao.addEstudiante(estudiante);
 
         // Torna a la pàgina principal
@@ -95,6 +95,7 @@ public class LoginController {
             bindingResult.rejectValue("password", "badpw", "Contraseña incorrecta");
             return "login";
         }
+
         // Autenticats correctament.
         // Guardem les dades de l'usuari autenticat a la sessió
         session.setAttribute("user", user);
