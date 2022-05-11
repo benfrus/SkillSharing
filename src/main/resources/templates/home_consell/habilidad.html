@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>EI1027</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand">Skill Sharing</a>
+</nav>
+<body class="text-center">
+<h2 class="fw-normal mb-7 pb-7" style="letter-spacing: 3px;">Registro para una nueva habilidad</h2>
+<div class="d-inline-flex p-2 bd-highlight">
+    <form action="#" th:action="@{/nueva_hab}"
+          th:object="${nueva_habilidad}" method="post">
+        <table>
+            <tr>
+                <td><label>Nombre</label></td>
+                <td><input type="text" th:field="*{nombre}" required/></td>
+            </tr>
+            <tr>
+                <td><label>Descripción</label></td>
+                <td><input type="text" th:field="*{descripcion}" required/></td>
+            </tr>
+            <tr>
+                <td><label>Tipo</label></td>
+                <td><input type="text" th:field="*{tipo}" required/></td>
+            </tr>
+            <tr>
+                <td><label>Nivel</label></td>
+                <td><select name="nivel" id="nivel" required>
+                    <option value="Pred" disabled selected>Selecciona un nivel de conocimiento</option>
+                    <option value="Experto">Experto</option>
+                    <option value="Medio">Medio</option>
+                    <option value="Iniciacion">Iniciacion</option>
+                </select></td>
+            </tr>
+                <td colspan="2" style="position: absolute; right:45%;"><input type="submit" value="Registrar habilidad" /></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
