@@ -65,11 +65,11 @@ public class EstudianteDao {
          }
     }
 
-    /* Devolver los datos de todos los estudiantes */
+    /* Devolver los datos de todos los estudiantes (sin los del consell) */
 
     public List<Estudiante> getEstudiantes () {
         try{
-            return  jdbcTemplate.query("SELECT * FROM estudiante", new es.uji.ei1027.SkillSharing.dao.EstudianteRowMapper());
+            return  jdbcTemplate.query("SELECT * FROM estudiante WHERE rol=?", new es.uji.ei1027.SkillSharing.dao.EstudianteRowMapper(), "estudiante");
 
         } catch(EmptyResultDataAccessException e){
             return new ArrayList<Estudiante>();

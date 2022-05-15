@@ -42,10 +42,8 @@ public class ControladorUsuario {
         UserDetails userDetails = (UserDetails)sesion;
         model.addAttribute("estudiante", estudianteDao.getEstudiante(userDetails.getUsername()));
         model.addAttribute("ofertas", ofertaDao.getOfertaByUser(userDetails.getUsername()));
-        System.out.println("despues de pedir las ofertas");
 
         model.addAttribute("peticiones", peticionDao.getPeticionesByUser(userDetails.getUsername()));
-        System.out.println("despues de pedir las peticiones");
         return "home_estudiante/lista";
     }
 

@@ -11,10 +11,59 @@
 <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
   <a class="navbar-brand">Skill Sharing Administración</a>
   <span>
-        <!--<p>¡Hola,  <span th:text="${estudiante.getNombre()}"></span>! <a href="/logout">Salir</a></p>-->
-
+        <p>¡Hola,  <span th:text="${estudiante.getNombre()}"></span>! <a href="/logout">Salir</a></p>
     </span>
 
 </nav>
+<div class="container py-4">
+  <div class="row">
+    <div class="col">
+      <h2>Estudiantes en la plataforma</h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Usuario</th>
+          <th scope="col">Nombre y apellidos</th>
+          <th scope="col">Grado</th>
+          <th scope="col">Curso</th>
+          <th scope="col">Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="estudiante:${todos_estudiantes}">
+          <td th:text="${estudiante.nombre_usuario}"></td>
+          <td th:text="${estudiante.nombre} + ' ' + ${estudiante.apellidos}"></td>
+          <td th:text="${estudiante.grado}"></td>
+          <td style="text-align:center" th:text="${estudiante.curso}"></td>
+          <td th:text="${estudiante.estado}"></td>
+            <td>
+              <a type="button" class="btn btn-outline-danger">Anular </a>
+            </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <h2>Habilidades en la plataforma</h2>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Nivel</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="habilidad:${habilidades}">
+        <td th:text="${habilidad.nombre}"></td>
+        <td th:text="${habilidad.tipo}"></td>
+        <td th:text="${habilidad.nivel}"></td>
+      </tr>
+      </tbody>
+    </table>
+    <a href="habilidad" class="btn btn-primary">Nueva habilidad</a>
+  </div>
+</div>
 </body>
 </html>

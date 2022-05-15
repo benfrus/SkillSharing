@@ -11,8 +11,8 @@
 <body class="text-center">
 <h2 class="fw-normal mb-7 pb-7" style="letter-spacing: 3px;">Registro para una nueva habilidad</h2>
 <div class="d-inline-flex p-2 bd-highlight">
-    <form action="#" th:action="@{/nueva_hab}"
-          th:object="${nueva_habilidad}" method="post">
+    <form action="#" th:action="@{home_consell/habilidad}"
+          th:object="${nuevaHabilidad}" method="post">
         <table>
             <tr>
                 <td><label>Nombre</label></td>
@@ -28,7 +28,7 @@
             </tr>
             <tr>
                 <td><label>Nivel</label></td>
-                <td><select name="nivel" id="nivel" required>
+                <td><select th:field="*{nivel}" name="nivel" id="nivel" required>
                     <option value="Pred" disabled selected>Selecciona un nivel de conocimiento</option>
                     <option value="Experto">Experto</option>
                     <option value="Medio">Medio</option>
