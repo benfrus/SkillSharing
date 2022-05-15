@@ -100,6 +100,19 @@ public class LoginController {
         // Autenticats correctament.
         // Guardem les dades de l'usuari autenticat a la sessió
         session.setAttribute("user", user);
+
+        Estudiante estudiante= new Estudiante();
+        estudiante = estudianteDao.getEstudiante(user.getUsername());
+        // Comprueba si el usuario es un estudiante o del consell
+        String rol = estudiante.getRol();
+        if(rol.equals("consell"))
+            return "home_consell/inicio_sesion_exito_consell";
+
+        // Si es un estudiante, comprueba si el usuario ha sido anulado
+        String estado= estudiante.getEstado();
+        if(estado.equals("anulado"))
+            return "estudiante_anulado";
+
         return "inicio_sesion_exito";
     }
 

@@ -56,6 +56,12 @@ public class ControladorUsuario {
         return "home_estudiante/oferta";
     }
 
+    @RequestMapping("/pagina_principal")
+    public String irPaginaPrincipal() {
+        return "redirect:/";
+    }
+
+    //revisar este método
     @RequestMapping(value="/oferta", method= RequestMethod.POST)
     public String addOferta(@ModelAttribute("oferta") OfertaFormulario ofertaFormulario,
                              BindingResult bindingResult, HttpSession session) {
