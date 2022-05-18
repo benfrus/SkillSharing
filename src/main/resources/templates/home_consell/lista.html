@@ -37,7 +37,7 @@
           <td style="text-align:center" th:text="${estudiante.curso}"></td>
           <td th:text="${estudiante.estado}"></td>
             <td>
-              <span th:if="${estudiante.estado == 'anulado'}" type="button" class="btn btn-outline-primary">Activar</span>
+              <span th:if="${estudiante.estado == 'anulado'}"> <a th:href="@{home_consell/activar/{usuario}(usuario=${estudiante.nombre_usuario})}"type="button" class="btn btn-outline-primary">Activar</a></span>
               <span th:if="${estudiante.estado == 'activo'}"> <a th:href="@{home_consell/anular/{usuario}(usuario=${estudiante.nombre_usuario})}" type="button" class="btn btn-outline-danger">Anular</a></span>
             </td>
         </tr>

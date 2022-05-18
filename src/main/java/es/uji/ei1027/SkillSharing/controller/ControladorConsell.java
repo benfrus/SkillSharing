@@ -44,6 +44,12 @@ public class ControladorConsell {
         model.addAttribute("usuario_anulado", usuario);
         return "home_consell/confirmacion_anular";
     }
+    @RequestMapping(value="home_consell/activar/{usuario}", method=RequestMethod.GET)
+    public String activarEstudiante(Model model, @PathVariable String usuario){
+        System.out.println("en activar usuario");
+        model.addAttribute("usuario_activado", usuario);
+        return "home_consell/confirmacion_activar";
+    }
 
     @RequestMapping(value="home_consell/anular_exito/{usuario}", method=RequestMethod.GET)
     public String confirmacionAnular(Model model, @PathVariable String usuario) {
@@ -51,6 +57,13 @@ public class ControladorConsell {
         estudianteEditado.setEstado("anulado");
         estudianteDao.updateEstudiante(estudianteEditado);
         return "home_consell/anular_exito";
+    }
+    @RequestMapping(value="home_consell/activar_exito/{usuario}", method=RequestMethod.GET)
+    public String confirmacionActivar(Model model, @PathVariable String usuario) {
+        Estudiante estudianteEditado = estudianteDao.getEstudiante(usuario);
+        estudianteEditado.setEstado("activo");
+        estudianteDao.updateEstudiante(estudianteEditado);
+        return "home_consell/activar_exito";
     }
 
     @RequestMapping("habilidad")
