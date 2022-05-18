@@ -60,20 +60,22 @@ public class ControladorUsuario {
     }
 
     //revisar este método
-    @RequestMapping(value="/oferta", method= RequestMethod.POST)
+    @RequestMapping(value="home_estudiante/oferta", method= RequestMethod.POST)
     public String addOferta(@ModelAttribute("oferta") OfertaFormulario ofertaFormulario,
                              BindingResult bindingResult, HttpSession session) {
         Oferta oferta = new Oferta();
-        oferta.setId_oferta(java.util.UUID.randomUUID().toString());
-        System.out.println("después de crear la oferta y ponerle el id");
+        oferta.setId_oferta(java.util.UUID.randomUUID().toString().substring(1,4));
+
         LocalDate ahora = java.time.LocalDate.now();
         oferta.setFecha_Inicio(ahora);
 
         System.out.println(oferta.toString());
-        LocalDate fechaExpiracion = ahora.plusDays(ofertaFormulario.getMesesExpiracion()*30);
-        oferta.setFecha_Fin(fechaExpiracion);
+        //LocalDate fechaExpiracion = ahora.plusDays(ofertaFormulario.getMesesExpiracion()*30);
+        oferta.setFecha_Fin(java.time.LocalDate.now());
+
 
         String nombreHabilidad = ofertaFormulario.getHabilidad();
+        System.out.println("nombre de la habilidad: " + nombreHabilidad);
         oferta.setId_Habilidad(habilidadDao.getHabilidadByNombre(nombreHabilidad).getId_hab());
 
         oferta.setDescripcion(ofertaFormulario.getDescripcion());

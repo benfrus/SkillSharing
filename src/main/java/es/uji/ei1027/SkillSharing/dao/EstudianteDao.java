@@ -34,7 +34,7 @@ public class EstudianteDao {
     /* Actualizar los datos del estudiante, excepto su id que es la clave primaria */
 
     public void updateEstudiante(Estudiante estudiante){
-        jdbcTemplate.update("UPDATE estudiante SET nombre_usuario= ?, contraseña= ?, nombre= ?, apellidos= ?, email= ?, grado= ?, curso= ?,rol=?, estado=?", estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getCurso(),estudiante.getRol(),estudiante.getEstado());
+        jdbcTemplate.update("UPDATE estudiante SET nombre_usuario= ?, contraseña= ?, nombre= ?, apellidos= ?, email= ?, grado= ?, curso= ?,rol=?, estado=? WHERE id_estudiante=? ",estudiante.getNombre_usuario(), estudiante.getContraseña(), estudiante.getNombre(), estudiante.getApellidos(), estudiante.getEmail(), estudiante.getGrado(), estudiante.getCurso(),estudiante.getRol(),estudiante.getEstado(),estudiante.getId_estudiante());
     }
 
     /* Devolver los datos de un estudiante a partir de su id. Devuelve nulo si no existe en la BBDD */

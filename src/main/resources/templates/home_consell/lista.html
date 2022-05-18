@@ -37,7 +37,8 @@
           <td style="text-align:center" th:text="${estudiante.curso}"></td>
           <td th:text="${estudiante.estado}"></td>
             <td>
-              <a type="button" class="btn btn-outline-danger">Anular </a>
+              <span th:if="${estudiante.estado == 'anulado'}" type="button" class="btn btn-outline-primary">Activar</span>
+              <span th:if="${estudiante.estado == 'activo'}"> <a th:href="@{home_consell/anular/{usuario}(usuario=${estudiante.nombre_usuario})}" type="button" class="btn btn-outline-danger">Anular</a></span>
             </td>
         </tr>
         </tbody>
@@ -52,6 +53,7 @@
         <th scope="col">Nombre</th>
         <th scope="col">Tipo</th>
         <th scope="col">Nivel</th>
+        <th scope="col">Estado</th>
       </tr>
       </thead>
       <tbody>
@@ -59,6 +61,11 @@
         <td th:text="${habilidad.nombre}"></td>
         <td th:text="${habilidad.tipo}"></td>
         <td th:text="${habilidad.nivel}"></td>
+        <td th:text="${habilidad.estado}"></td>
+        <td>
+          <span th:if="${habilidad.estado == 'Cancelado'}" type="button" class="btn btn-outline-primary">Activar</span>
+          <span th:if="${habilidad.estado == 'Activo'}" type="button" class="btn btn-outline-danger">Cancelar</span>
+        </td>
       </tr>
       </tbody>
     </table>

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -36,6 +37,20 @@ public class ControladorConsell {
         model.addAttribute("habilidades", habilidadDao.getHabillidades());
 
         return "home_consell/lista";
+    }
+
+    @RequestMapping(value="home_consell/anular/{usuario}", method=RequestMethod.GET)
+    public String anularEstudiante(Model model, @PathVariable String usuario){
+        model.addAttribute("usuario_anulado", usuario);
+        return "home_consell/confirmacion_anular";
+    }
+
+    @RequestMapping(value="home_consell/anular_exito/{usuario}", method=RequestMethod.GET)
+    public String confirmacionAnular(Model model, @PathVariable String usuario) {
+        Estudiante estudianteEditado = estudianteDao.getEstudiante(usuario);
+        estudianteEditado.setEstado("anulado");
+        estudianteDao.updateEstudiante(estudianteEditado);
+        return "home_consell/anular_exito";
     }
 
     @RequestMapping("habilidad")

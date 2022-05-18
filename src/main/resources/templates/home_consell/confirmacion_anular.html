@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <title>EI1027</title>
+</head>
+<body class="text-center">
+<div class="containter py-4 d-flex justify-content-center">
+    <div class="card border-danger mb-6" style="max-width: 60rem;">
+        <div class="card-header">ANULAR USUARIO</div>
+        <div class="card-body text-danger">
+            <h5 class="card-title">¿Quieres anular al usuario <i th:text="${usuario_anulado}"></i> ?</h5>
+            <p class="card-text">Si anulas a este usuario no podrá participar en el sistema.</p>
+            <a href="../../lista" class="btn btn-outline-secondary">No, mantener activo</a>
+            <a th:href="@{../anular_exito/{usuario}(usuario=${usuario_anulado})}" class="btn btn-danger">Sí, anular</a>
+        </div>
+    </div>
+</div>
+
+</div>
+</body>
+</html>
