@@ -44,6 +44,7 @@ public class ControladorConsell {
         model.addAttribute("usuario_anulado", usuario);
         return "home_consell/confirmacion_anular";
     }
+
     @RequestMapping(value="home_consell/activar/{usuario}", method=RequestMethod.GET)
     public String activarEstudiante(Model model, @PathVariable String usuario){
         System.out.println("en activar usuario");
@@ -77,11 +78,39 @@ public class ControladorConsell {
     public String addNuevaHabilidad(@ModelAttribute("nuevaHabilidad") Habilidad habilidad) {
 
         String id = java.util.UUID.randomUUID().toString().substring(1,4);
-        System.out.println("creando nueva habilidad");
         habilidad.setId_hab(id);
         habilidad.setEstado("Activo");
 
         habilidadDao.addHabilidad(habilidad);
         return "habilidad_exito";
+    }
+    @RequestMapping(value="home_consell/anular_habilidad/{id_hab}", method=RequestMethod.GET)
+    public String anularHabilidad(Model model, @PathVariable String id_hab){
+        Habilidad habilidad_anular= habilidadDao.getHabilidad(id_hab);
+        model.addAttribute("habilidad_anulada", habilidad_anular.getNombre());
+        model.addAttribute("id_habilidad",id_hab);
+        return "home_consell/confirmacion_anular_habilidad";
+    }
+    @RequestMapping(value="home_consell/anular_exito_habilidad/{id_hab}", method=RequestMethod.GET)
+    public String confirmacionAnularHabilidad(Model model, @PathVariable String id_hab) {
+        Habilidad habilidadEditada=habilidadDao.getHabilidad(id_hab);
+        habilidadEditada.setEstado("Cancelado");
+        habilidadDao.updateHabilidad(habilidadEditada);
+        return "home_consell/anular_exito_habilidad";
+    }
+    @RequestMapping(value="home_consell/activar_habilidad/{id_hab}", method=RequestMethod.GET)
+    public String activaHabilidad(Model model, @PathVariable String id_hab){
+        Habilidad habilidad_activar= habilidadDao.getHabilidad(id_hab);
+        model.addAttribute("habilidad_anulada", habilidad_activar.getNombre());
+        model.addAttribute("id_habilidad",id_hab);
+        return "home_consell/confirmacion_activar_habilidad";
+    }
+    @RequestMapping(value="home_consell/activar_exito_habilidad/{id_hab}", method=RequestMethod.GET)
+    public String confirmacionActivarHabilidad(Model model, @PathVariable String id_hab) {
+        Habilidad habilidadEditada=habilidadDao.getHabilidad(id_hab);
+        System.out.println(habilidadEditada.toString());
+        habilidadEditada.setEstado("Activo");
+        habilidadDao.updateHabilidad(habilidadEditada);
+        return "home_consell/activar_exito_habilidad";
     }
 }

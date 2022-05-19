@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <title>EI1027</title>
+</head>
+<body class="text-center">
+<div class="containter py-4 d-flex justify-content-center">
+  <div class="card border-danger mb-6" style="max-width: 60rem;">
+    <div class="card-header">ACTIVAR HABILIDAD</div>
+    <div class="card-body text-danger">
+      <h5 class="card-title">¿Quieres activar la habilidad <i th:text="${habilidad_activada}"></i> ?</h5>
+      <p class="card-text">Si activas la habilidad podrán haber tanto ofertas como peticiones relacionadas con ella</p>
+      <a href="../../lista" class="btn btn-outline-secondary">No, mantener anulada</a>
+      <a th:href="@{../activar_exito_habilidad/{id_hab}(id_hab=${id_habilidad})}" class="btn btn-danger">Sí, activar</a>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

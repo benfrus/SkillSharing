@@ -34,7 +34,7 @@ public class HabilidadDao {
     /* Actualizar los datos de la habilidad */
 
     public void updateHabilidad(Habilidad habilidad){
-        jdbcTemplate.update("UPDATE habilidad SET id_habilidad= ?,  nombre= ?, tipo= ?, descripcion= ?, nivel= ?, estado= ?", habilidad.getId_hab(), habilidad.getNombre(), habilidad.getTipo(), habilidad.getDescripcion(), habilidad.getNivel(),  habilidad.getEstado());
+        jdbcTemplate.update("UPDATE habilidad SET id_habilidad= ?,  nombre= ?, tipo= ?, descripcion= ?, nivel= ?, estado= ? WHERE id_habilidad=?", habilidad.getId_hab(), habilidad.getNombre(), habilidad.getTipo(), habilidad.getDescripcion(), habilidad.getNivel(),  habilidad.getEstado(), habilidad.getId_hab());
     }
 
     /* Devolver los datos de un estudiante a partir de su id. Devuelve nulo si no existe en la BBDD */

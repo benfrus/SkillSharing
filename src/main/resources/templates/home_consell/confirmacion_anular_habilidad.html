@@ -10,10 +10,10 @@
   <div class="card border-danger mb-6" style="max-width: 60rem;">
     <div class="card-header">ANULAR HABILIDAD</div>
     <div class="card-body text-danger">
-      <h5 class="card-title">¿Quieres anular la habilidad? <i th:text="${usuario_anulado}"></i> ?</h5>
-      <p class="card-text">Si anulas la habilidad no será visible para los usuarios.</p>
+      <h5 class="card-title">¿Quieres anular la habilidad <i th:text="${habilidad_anulada}"></i> ?</h5>
+      <p class="card-text">Si anulas la habilidad no será visible para los usuarios, si hay usuarios con ofertas o colaboraciones relacionadas a la habilidad serán tambien anuladas.</p>
       <a href="../../lista" class="btn btn-outline-secondary">No, mantener activa</a>
-      <a href="../../anular_exito" class="btn btn-danger">Sí, anular</a>
+      <a th:href="@{../anular_exito_habilidad/{id_hab}(id_hab=${id_habilidad})}" class="btn btn-danger">Sí, anular</a>
     </div>
   </div>
 </div>
