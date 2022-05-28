@@ -1,12 +1,14 @@
 package es.uji.ei1027.SkillSharing.dao;
 
 import es.uji.ei1027.SkillSharing.model.Oferta;
+import es.uji.ei1027.SkillSharing.model.Peticion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +64,15 @@ public class OfertaDao {
         }
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Oferta>();
+        }
+    }
+
+    public List<Peticion> getOfertasByHabilidad(String id_hab, LocalDate fecha_Fin){
+        try{
+            return jdbcTemplate.query("SELECT * FROM peticion WHERE id_habilidad=? and fecha_fin>=?", new PeticionRowMapper(), id_hab, fecha_Fin);
+        }
+        catch(EmptyResultDataAccessException e) {
+            return new ArrayList<Peticion>();
         }
     }
 

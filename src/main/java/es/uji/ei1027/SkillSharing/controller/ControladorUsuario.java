@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -36,7 +37,6 @@ public class ControladorUsuario {
         UserDetails userDetails = (UserDetails)sesion;
         model.addAttribute("estudiante", estudianteDao.getEstudiante(userDetails.getUsername()));
         model.addAttribute("ofertas", ofertaDao.getOfertaByUser(userDetails.getUsername()));
-
         model.addAttribute("peticiones", peticionDao.getPeticionesByUser(userDetails.getUsername()));
         return "home_estudiante/lista";
     }
@@ -96,10 +96,29 @@ public class ControladorUsuario {
         System.out.println(peticion.toString());
         peticionDao.addPeticion(peticion);
 
-
-        // Torna a la pàgina principal
         return "home_estudiante/oferta_peticion_exito";
     }
+
+    //OFERTA
+    @RequestMapping(value="home_estudiante/ver_oferta/{id_oferta}", method=RequestMethod.GET)
+    public String verOferta(Model model, @PathVariable String id_oferta){
+        Oferta ofertaSeleccionada = ofertaDao.getOferta(id_oferta);
+        model.addAttribute("oferta_seleccionada", ofertaSeleccionada);
+        model.addAttribute("habilidad", habilidadDao.getHabilidad(ofertaSeleccionada.getId_Habilidad()));
+        model.addAttribute("peticiones", peticionDao.getPeticionesByHabilidad(ofertaSeleccionada.getId_Habilidad(), ofertaSeleccionada.getFecha_Fin()));
+        return "home_estudiante/oferta_detalle";
+    }
+
+    //PETICION
+    @RequestMapping(value="home_estudiante/ver_peticion/{id_peticion}", method=RequestMethod.GET)
+    public String verPeticion(Model model, @PathVariable String id_peticion){
+        Peticion peticionSeleccionada = peticionDao.getPeticion(id_peticion);
+        model.addAttribute("peticion_seleccionada", peticionSeleccionada);
+        model.addAttribute("habilidad", habilidadDao.getHabilidad(peticionSeleccionada.getId_Habilidad()));
+        model.addAttribute("ofertas", ofertaDao.getOfertasByHabilidad(peticionSeleccionada.getId_Habilidad(), peticionSeleccionada.getFecha_Fin()));
+        return "home_estudiante/peticion_detalle";
+    }
+
 
 
 }

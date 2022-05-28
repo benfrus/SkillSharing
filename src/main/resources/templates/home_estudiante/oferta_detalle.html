@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>EI1027</title>
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand">Skill Sharing</a>
+</nav>
+<body class>
+<div class="container my-4 mx-4">
+  <div class="card text-center">
+    <div class="card-body">
+      <h5 class="card-title" th:text="${oferta_seleccionada.getDescripcion()}"></h5>
+      <p class="card-text" th:text="${habilidad.getNombre()}"></p>
+    </div>
+    <div class="card-footer text-muted">Expira el <span th:text="${oferta_seleccionada.getFecha_Fin()}"></span></div>
+  </div>
+
+    <div class="row my-4">
+      <h2>¿Con quién puedes colaborar?</h2>
+    </div>
+  <div class="row">
+      <table class="table w-auto">
+        <thead>
+        <tr>
+          <th scope="col">Descripción</th>
+          <th scope="col">Fecha fin</th>
+          <th scope="col">  </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="peticion:${peticiones}">
+          <td th:text="${peticion.descripcion}"></td>
+          <td th:text="${peticion.fecha_Fin}"></td>
+          <td>
+            <a  type="button" class="btn btn-outline-primary">Colaborar</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+</body>
+</html>

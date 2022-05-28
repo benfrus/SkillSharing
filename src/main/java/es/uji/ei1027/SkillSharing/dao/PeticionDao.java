@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +62,15 @@ public class PeticionDao {
     public List<Peticion> getPeticionesByUser(String id_estudiante){
         try{
             return jdbcTemplate.query("SELECT * FROM peticion WHERE id_estudiante=?", new PeticionRowMapper(), id_estudiante);
+        }
+        catch(EmptyResultDataAccessException e) {
+            return new ArrayList<Peticion>();
+        }
+    }
+
+    public List<Peticion> getPeticionesByHabilidad(String id_hab, LocalDate fecha_Fin){
+        try{
+            return jdbcTemplate.query("SELECT * FROM peticion WHERE id_habilidad=? and fecha_fin>=?", new PeticionRowMapper(), id_hab, fecha_Fin);
         }
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Peticion>();
