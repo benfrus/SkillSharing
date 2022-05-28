@@ -39,6 +39,7 @@ public class ControladorConsell {
         return "home_consell/lista";
     }
 
+    // USUARIO
     @RequestMapping(value="home_consell/anular/{usuario}", method=RequestMethod.GET)
     public String anularEstudiante(Model model, @PathVariable String usuario){
         model.addAttribute("usuario_anulado", usuario);
@@ -57,6 +58,8 @@ public class ControladorConsell {
         Estudiante estudianteEditado = estudianteDao.getEstudiante(usuario);
         estudianteEditado.setEstado("anulado");
         estudianteDao.updateEstudiante(estudianteEditado);
+
+        //TODO: ANULAR TODAS LAS OFERTAS Y PETICIONES DEL ESTUDIANTE
         return "home_consell/anular_exito";
     }
     @RequestMapping(value="home_consell/activar_exito/{usuario}", method=RequestMethod.GET)
@@ -67,6 +70,7 @@ public class ControladorConsell {
         return "home_consell/activar_exito";
     }
 
+    // HABILIDAD
     @RequestMapping("habilidad")
     public String formularioNuevaHabilidad(Model model) {
        model.addAttribute("nuevaHabilidad", new Habilidad());
@@ -96,6 +100,8 @@ public class ControladorConsell {
         Habilidad habilidadEditada=habilidadDao.getHabilidad(id_hab);
         habilidadEditada.setEstado("Cancelado");
         habilidadDao.updateHabilidad(habilidadEditada);
+
+        //TODO: ANULAR TODAS LAS OFERTAS Y PETICIONES DE ESA HABILIDAD
         return "home_consell/anular_exito_habilidad";
     }
     @RequestMapping(value="home_consell/activar_habilidad/{id_hab}", method=RequestMethod.GET)
@@ -112,5 +118,22 @@ public class ControladorConsell {
         habilidadEditada.setEstado("Activo");
         habilidadDao.updateHabilidad(habilidadEditada);
         return "home_consell/activar_exito_habilidad";
+    }
+    @RequestMapping(value="home_consell/modificar_habilidad/{id_hab}", method=RequestMethod.GET)
+    public String modificar_Habilidad(Model model, @PathVariable String id_hab) {
+        System.out.println("Entro aqui atontao");
+        Habilidad habilidadAEditar=habilidadDao.getHabilidad(id_hab);
+        model.addAttribute("habilidad_a_editar",habilidadAEditar);
+        return "home_consell/modificar_habilidad";
+    }
+
+    //TODO: ACTUALIZAR UNA HABILIDAD
+    @RequestMapping(value="home_consell/editar_habilidad/{id_hab}", method=RequestMethod.GET)
+    public String editarHabilidad(@ModelAttribute("habilidad_a_editar") Habilidad habilidad_modificada, @PathVariable String id_hab) {
+       //Habilidad viejaHabilidad = habilidadDao.getHabilidad(id_hab);
+        //viejaHabilidad.setDescripcion(habilidad_modificada.getDescripcion());
+        System.out.println(id_hab);
+        //habilidadDao.updateHabilidad(viejaHabilidad);
+        return "home_consell/confirmacion_editar_habilidad";
     }
 }

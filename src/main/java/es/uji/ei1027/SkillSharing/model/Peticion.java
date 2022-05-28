@@ -1,22 +1,21 @@
 package es.uji.ei1027.SkillSharing.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+
 public class Peticion {
     private String id_Pet;
-    private String fecha_Inicio;
-    private String fecha_Fin;
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    private LocalDate fecha_Inicio;
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    private LocalDate fecha_Fin;
     private String descripcion;
     private String id_Habilidad;
     private String id_Estudiante;
+    private String estado;
     public Peticion(){
         super();
-    }
-    public Peticion(String id_Pet, String fecha_Inicio, String fecha_Fin, String descripcion, String id_Habilidad, String id_Estudiante) {
-        this.id_Pet = id_Pet;
-        this.fecha_Inicio = fecha_Inicio;
-        this.fecha_Fin = fecha_Fin;
-        this.descripcion = descripcion;
-        this.id_Habilidad = id_Habilidad;
-        this.id_Estudiante = id_Estudiante;
     }
 
     public String getId_Pet() {
@@ -27,19 +26,19 @@ public class Peticion {
         this.id_Pet = id_Pet;
     }
 
-    public String getFecha_Inicio() {
+    public LocalDate getFecha_Inicio() {
         return fecha_Inicio;
     }
 
-    public void setFecha_Inicio(String fecha_Inicio) {
+    public void setFecha_Inicio(LocalDate fecha_Inicio) {
         this.fecha_Inicio = fecha_Inicio;
     }
 
-    public String getFecha_Fin() {
+    public LocalDate getFecha_Fin() {
         return fecha_Fin;
     }
 
-    public void setFecha_Fin(String fecha_Fin) {
+    public void setFecha_Fin(LocalDate fecha_Fin) {
         this.fecha_Fin = fecha_Fin;
     }
 
@@ -67,15 +66,11 @@ public class Peticion {
         this.id_Estudiante = id_Estudiante;
     }
 
-    @Override
-    public String toString() {
-        return "Peticion{" +
-                "id_Pet='" + id_Pet + '\'' +
-                ", fecha_Inicio='" + fecha_Inicio + '\'' +
-                ", fecha_Fin='" + fecha_Fin + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", id_Habilidad='" + id_Habilidad + '\'' +
-                ", id_Estudiante='" + id_Estudiante + '\'' +
-                '}';
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

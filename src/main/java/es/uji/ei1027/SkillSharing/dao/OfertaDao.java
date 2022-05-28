@@ -22,7 +22,7 @@ public class OfertaDao {
     /* Añadimos oferta a la BBDD */
 
     public void addOferta (Oferta oferta){
-        jdbcTemplate.update("INSERT INTO oferta VALUES(?, ?, ?, ?, ?, ?)", oferta.getId_oferta(), oferta.getFecha_Inicio(), oferta.getFecha_Fin(), oferta.getDescripcion(), oferta.getId_Habilidad(), oferta.getId_Estudiante());
+        jdbcTemplate.update("INSERT INTO oferta VALUES(?, ?, ?, ?, ?, ?, ?)", oferta.getId_oferta(), oferta.getFecha_Inicio(), oferta.getFecha_Fin(), oferta.getDescripcion(), oferta.getId_Habilidad(), oferta.getId_Estudiante(),oferta.getEstado());
     }
 
     /* Eliminamos la oferta de la BBDD */
@@ -34,7 +34,7 @@ public class OfertaDao {
     /* Actualizar los datos de la habilidad */
 
     public void updateOferta(Oferta oferta){
-        jdbcTemplate.update("UPDATE oferta SET id_oferta= ?,  fecha_inicio= ?, fecha_fin= ?, descripcion= ?, id_habilidad= ?, id_estudiante= ?", oferta.getId_oferta(), oferta.getFecha_Inicio(), oferta.getFecha_Fin(), oferta.getDescripcion(), oferta.getId_Habilidad(), oferta.getId_Estudiante());
+        jdbcTemplate.update("UPDATE oferta SET id_oferta= ?,  fecha_inicio= ?, fecha_fin= ?, descripcion= ?, id_habilidad= ?, id_estudiante= ?, estado=?", oferta.getId_oferta(), oferta.getFecha_Inicio(), oferta.getFecha_Fin(), oferta.getDescripcion(), oferta.getId_Habilidad(), oferta.getId_Estudiante(),oferta.getEstado());
     }
 
     /* Devolver los datos de un estudiante a partir de su id. Devuelve nulo si no existe en la BBDD */

@@ -54,6 +54,8 @@
         <th scope="col">Tipo</th>
         <th scope="col">Nivel</th>
         <th scope="col">Estado</th>
+        <th scope="col">     </th>
+        <th scope="col">     </th>
       </tr>
       </thead>
       <tbody>
@@ -66,6 +68,10 @@
           <span th:if="${habilidad.estado == 'Cancelado'}"> <a th:href="@{home_consell/activar_habilidad/{id_hab}(id_hab=${habilidad.id_hab})}"type="button" class="btn btn-outline-primary">Activar</a></span>
           <span th:if="${habilidad.estado == 'Activo'}"> <a th:href="@{home_consell/anular_habilidad/{id_hab}(id_hab=${habilidad.id_hab})}"type="button" class="btn btn-outline-danger">Anular</a></span>
         </td>
+        <td>
+          <a  th:href="@{home_consell/modificar_habilidad/{id_hab}(id_hab=${habilidad.id_hab})}"type="button" class="btn btn-outline-warning"><i class="bi bi-pencil"></i></a>
+        </td>
+
       </tr>
       </tbody>
     </table>

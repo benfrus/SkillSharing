@@ -17,6 +17,8 @@ public final class OfertaRowMapper implements RowMapper<Oferta> {
         oferta.setDescripcion(rs.getString("descripcion"));
         oferta.setId_Habilidad(rs.getString("id_habilidad"));
         oferta.setId_Estudiante(rs.getString("id_estudiante"));
+        oferta.setEstado(rs.getString("estado"));
+
         return oferta;
     }
 }

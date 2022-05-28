@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>EI1027</title>
+  <meta charset="UTF-8"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand">Skill Sharing</a>
+</nav>
+<body>
+
+<div class="container-lg px-4">
+  <h2 class="pt-3" style="letter-spacing: 3px;">Editando habilidad</h2>
+  <form action="#" th:action="@{../../home_consell/editar_habilidad}"
+        th:object="${habilidad_a_editar}" method="get">
+    <div class="mb-3">
+      <label for="formNombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="formNombre" th:field="*{nombre}"/>
+    </div>
+    <div class="mb-3">
+      <label for="textAreaDescripcion" class="form-label">Descripción</label>
+      <textarea class="form-control" id="textAreaDescripcion" rows="3" th:field="*{descripcion}"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="formNivel" class="form-label">Nivel</label>
+      <input type="text" class="form-control" id="formNivel" th:field="*{nivel}"/>
+    </div>
+    <div class="mb-3">
+      <label for="formTipo" class="form-label">Tipo</label>
+      <input type="text" class="form-control" id="formTipo"  th:field="*{tipo}"/>
+    </div>
+    <input th:href="@{home_consell/editar_habilidad/{id_hab}(id_hab=${habilidad_a_editar.id_hab})}" type="submit" class="btn btn-primary" value="Guardar" />
+  </form>
+</div>
+</body>
+</html>

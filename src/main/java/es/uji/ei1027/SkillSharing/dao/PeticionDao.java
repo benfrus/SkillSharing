@@ -24,7 +24,7 @@ public class PeticionDao {
     /* Añadimos oferta a la BBDD */
 
     public void addPeticion (Peticion peticion){
-        jdbcTemplate.update("INSERT INTO peticion VALUES(?, ?, ?, ?, ?, ?)", peticion.getId_Pet(), peticion.getFecha_Inicio(), peticion.getFecha_Fin(), peticion.getDescripcion(), peticion.getId_Habilidad(), peticion.getId_Estudiante());
+        jdbcTemplate.update("INSERT INTO peticion VALUES(?, ?, ?, ?, ?, ?, ?)", peticion.getId_Pet(), peticion.getFecha_Inicio(), peticion.getFecha_Fin(), peticion.getDescripcion(), peticion.getId_Habilidad(), peticion.getId_Estudiante(), peticion.getEstado());
     }
 
     /* Eliminamos la oferta de la BBDD */
@@ -36,7 +36,7 @@ public class PeticionDao {
     /* Actualizar los datos de la habilidad */
 
     public void updatePeticion(Peticion peticion){
-        jdbcTemplate.update("UPDATE peticion SET id_pet= ?,  fecha_inicio= ?, fecha_fin= ?, descripcion= ?, id_habilidad= ?, id_estudiante= ?", peticion.getId_Pet(), peticion.getFecha_Inicio(), peticion.getFecha_Fin(), peticion.getDescripcion(), peticion.getId_Habilidad(), peticion.getId_Estudiante());
+        jdbcTemplate.update("UPDATE peticion SET id_pet= ?,  fecha_inicio= ?, fecha_fin= ?, descripcion= ?, id_habilidad= ?, id_estudiante= ?, estado=?", peticion.getId_Pet(), peticion.getFecha_Inicio(), peticion.getFecha_Fin(), peticion.getDescripcion(), peticion.getId_Habilidad(), peticion.getId_Estudiante(),peticion.getEstado());
     }
 
     /* Devolver los datos de un estudiante a partir de su id. Devuelve nulo si no existe en la BBDD */

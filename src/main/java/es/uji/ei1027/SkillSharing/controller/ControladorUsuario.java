@@ -9,16 +9,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpSession;
 
-import java.net.http.HttpRequest;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -47,11 +41,11 @@ public class ControladorUsuario {
         return "home_estudiante/lista";
     }
 
-    @RequestMapping("/oferta")
+    @RequestMapping("/oferta_peticion")
     public String nuevaOferta(Model model) {
         model.addAttribute("habilidades", habilidadDao.getHabillidades());
-        model.addAttribute("oferta", new OfertaFormulario());
-        return "home_estudiante/oferta";
+        model.addAttribute("oferta_peticion", new OfertaPeticionFormulario());
+        return "home_estudiante/oferta_peticion";
     }
 
     @RequestMapping("/pagina_principal")
@@ -59,36 +53,53 @@ public class ControladorUsuario {
         return "redirect:/";
     }
 
-    //revisar este método
-    @RequestMapping(value="home_estudiante/oferta", method= RequestMethod.POST)
-    public String addOferta(@ModelAttribute("oferta") OfertaFormulario ofertaFormulario,
+    @RequestMapping(value="home_estudiante/oferta_peticion", method= RequestMethod.POST)
+    public String addOferta(@ModelAttribute("oferta_peticion") OfertaPeticionFormulario ofertaPeticionFormulario,
                              BindingResult bindingResult, HttpSession session) {
+
+        // Crea una nueva oferta
         Oferta oferta = new Oferta();
         oferta.setId_oferta(java.util.UUID.randomUUID().toString().substring(1,4));
 
         LocalDate ahora = java.time.LocalDate.now();
         oferta.setFecha_Inicio(ahora);
 
-        System.out.println(oferta.toString());
-        //LocalDate fechaExpiracion = ahora.plusDays(ofertaFormulario.getMesesExpiracion()*30);
-        oferta.setFecha_Fin(java.time.LocalDate.now());
+        LocalDate fechaExpiracion = ahora.plusDays(ofertaPeticionFormulario.getMesesExpiracionOferta()*30);
+        oferta.setFecha_Fin(fechaExpiracion);
 
-
-        String nombreHabilidad = ofertaFormulario.getHabilidad();
-        System.out.println("nombre de la habilidad: " + nombreHabilidad);
+        String nombreHabilidad = ofertaPeticionFormulario.getHabilidadOferta();
         oferta.setId_Habilidad(habilidadDao.getHabilidadByNombre(nombreHabilidad).getId_hab());
 
-        oferta.setDescripcion(ofertaFormulario.getDescripcion());
+        oferta.setDescripcion(ofertaPeticionFormulario.getDescripcionOferta());
 
         Object sesion = session.getAttribute("user");
 
         UserDetails userDetails = (UserDetails)sesion;
         oferta.setId_Estudiante(userDetails.getUsername());
-
+        oferta.setEstado("activo");
+        System.out.println(oferta.toString());
         ofertaDao.addOferta(oferta);
 
+        // Crea una nueva petición
+        Peticion peticion = new Peticion();
+        peticion.setId_Pet(java.util.UUID.randomUUID().toString().substring(1,4));
+
+        peticion.setFecha_Inicio(ahora);
+        peticion.setFecha_Fin(ahora.plusDays(ofertaPeticionFormulario.getMesesExpiracionOferta()*30));
+
+        String nombreHabilidadPet = ofertaPeticionFormulario.getHabilidadPeticion();
+        peticion.setId_Habilidad(habilidadDao.getHabilidadByNombre(nombreHabilidadPet).getId_hab());
+        peticion.setDescripcion(ofertaPeticionFormulario.getDescripcionPeticion());
+
+        peticion.setId_Estudiante(userDetails.getUsername());
+        peticion.setEstado("activo");
+        System.out.println(peticion.toString());
+        peticionDao.addPeticion(peticion);
+
+
         // Torna a la pàgina principal
-        return "registrarse_exito";
+        return "home_estudiante/oferta_peticion_exito";
     }
+
 
 }
