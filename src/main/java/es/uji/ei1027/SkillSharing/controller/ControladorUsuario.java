@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpSession;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Controller
@@ -28,6 +29,8 @@ public class ControladorUsuario {
     private EstudianteDao estudianteDao;
     @Autowired
     private HabilidadDao habilidadDao;
+    @Autowired
+    private ColaboracionDao colaboracionDao;
 
     @RequestMapping("/lista")
     public String getOfertas(Model model, HttpSession session) {
@@ -36,8 +39,13 @@ public class ControladorUsuario {
 
         UserDetails userDetails = (UserDetails)sesion;
         model.addAttribute("estudiante", estudianteDao.getEstudiante(userDetails.getUsername()));
-        model.addAttribute("ofertas", ofertaDao.getOfertaByUser(userDetails.getUsername()));
+
+        List<Oferta> ofertas = ofertaDao.getOfertaByUser(userDetails.getUsername());
+        model.addAttribute("ofertas", ofertas);
+
         model.addAttribute("peticiones", peticionDao.getPeticionesByUser(userDetails.getUsername()));
+
+       // model.addAttribute("colaboraciones", colaboracionDao.get)
         return "home_estudiante/lista";
     }
 
@@ -105,7 +113,8 @@ public class ControladorUsuario {
         Oferta ofertaSeleccionada = ofertaDao.getOferta(id_oferta);
         model.addAttribute("oferta_seleccionada", ofertaSeleccionada);
         model.addAttribute("habilidad", habilidadDao.getHabilidad(ofertaSeleccionada.getId_Habilidad()));
-        model.addAttribute("peticiones", peticionDao.getPeticionesByHabilidad(ofertaSeleccionada.getId_Habilidad(), ofertaSeleccionada.getFecha_Fin()));
+        model.addAttribute("peticiones", peticionDao.getPeticionesParaColaborar(ofertaSeleccionada.getId_Habilidad(), ofertaSeleccionada.getFecha_Fin(), ofertaSeleccionada.getId_Estudiante()));
+        model.addAttribute("colaboraciones", colaboracionDao.getDetalleColaboracionByOferta(id_oferta));
         return "home_estudiante/oferta_detalle";
     }
 

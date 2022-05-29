@@ -37,7 +37,7 @@ public class PeticionDao {
     /* Actualizar los datos de la habilidad */
 
     public void updatePeticion(Peticion peticion){
-        jdbcTemplate.update("UPDATE peticion SET id_pet= ?,  fecha_inicio= ?, fecha_fin= ?, descripcion= ?, id_habilidad= ?, id_estudiante= ?, estado=?", peticion.getId_Pet(), peticion.getFecha_Inicio(), peticion.getFecha_Fin(), peticion.getDescripcion(), peticion.getId_Habilidad(), peticion.getId_Estudiante(),peticion.getEstado());
+        jdbcTemplate.update("UPDATE peticion SET id_pet= ?,  fecha_inicio= ?, fecha_fin= ?, descripcion= ?, id_habilidad= ?, id_estudiante= ?, estado=? where id_pet=?", peticion.getId_Pet(), peticion.getFecha_Inicio(), peticion.getFecha_Fin(), peticion.getDescripcion(), peticion.getId_Habilidad(), peticion.getId_Estudiante(),peticion.getEstado(), peticion.getId_Pet());
     }
 
     /* Devolver los datos de un estudiante a partir de su id. Devuelve nulo si no existe en la BBDD */
@@ -68,9 +68,9 @@ public class PeticionDao {
         }
     }
 
-    public List<Peticion> getPeticionesByHabilidad(String id_hab, LocalDate fecha_Fin){
+    public List<Peticion> getPeticionesParaColaborar(String id_hab, LocalDate fecha_Fin, String id_estudiante){
         try{
-            return jdbcTemplate.query("SELECT * FROM peticion WHERE id_habilidad=? and fecha_fin>=?", new PeticionRowMapper(), id_hab, fecha_Fin);
+            return jdbcTemplate.query("SELECT * FROM peticion WHERE id_habilidad=? and fecha_fin>=? and id_estudiante!=? and estado='activo'", new PeticionRowMapper(), id_hab, fecha_Fin, id_estudiante);
         }
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Peticion>();

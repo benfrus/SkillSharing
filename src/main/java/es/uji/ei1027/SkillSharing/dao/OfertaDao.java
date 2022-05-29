@@ -36,7 +36,7 @@ public class OfertaDao {
     /* Actualizar los datos de la habilidad */
 
     public void updateOferta(Oferta oferta){
-        jdbcTemplate.update("UPDATE oferta SET id_oferta= ?,  fecha_inicio= ?, fecha_fin= ?, descripcion= ?, id_habilidad= ?, id_estudiante= ?, estado=?", oferta.getId_oferta(), oferta.getFecha_Inicio(), oferta.getFecha_Fin(), oferta.getDescripcion(), oferta.getId_Habilidad(), oferta.getId_Estudiante(),oferta.getEstado());
+        jdbcTemplate.update("UPDATE oferta SET id_oferta= ?,  fecha_inicio= ?, fecha_fin= ?, descripcion= ?, id_habilidad= ?, id_estudiante= ?, estado=? where id_oferta=?", oferta.getId_oferta(), oferta.getFecha_Inicio(), oferta.getFecha_Fin(), oferta.getDescripcion(), oferta.getId_Habilidad(), oferta.getId_Estudiante(),oferta.getEstado(), oferta.getId_oferta());
     }
 
     /* Devolver los datos de un estudiante a partir de su id. Devuelve nulo si no existe en la BBDD */
@@ -67,12 +67,12 @@ public class OfertaDao {
         }
     }
 
-    public List<Peticion> getOfertasByHabilidad(String id_hab, LocalDate fecha_Fin){
+    public List<Oferta> getOfertasByHabilidad(String id_hab, LocalDate fecha_Fin){
         try{
-            return jdbcTemplate.query("SELECT * FROM peticion WHERE id_habilidad=? and fecha_fin>=?", new PeticionRowMapper(), id_hab, fecha_Fin);
+            return jdbcTemplate.query("SELECT * FROM oferta WHERE id_habilidad=? and fecha_fin>=?", new OfertaRowMapper(), id_hab, fecha_Fin);
         }
         catch(EmptyResultDataAccessException e) {
-            return new ArrayList<Peticion>();
+            return new ArrayList<Oferta>();
         }
     }
 

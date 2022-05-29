@@ -4,6 +4,7 @@ import ch.qos.logback.core.joran.util.StringToObjectConverter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.time.LocalTime;
 
@@ -11,7 +12,7 @@ public class Colaboracion {
 
 
     private String id_colab;
-    private String fecha_inicio;
+    private LocalDate fecha_inicio;
     private String fecha_fin;
     private int horas_totales;
     private  String evaluacion;
@@ -30,10 +31,10 @@ public class Colaboracion {
         this.id_colab = id_colab;
     }
 
-    public String getFecha_inicio() { return fecha_inicio;
+    public LocalDate getFecha_inicio() { return fecha_inicio;
     }
 
-    public void setFecha_inicio(String fecha_inicio) {
+    public void setFecha_inicio(LocalDate fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
 
