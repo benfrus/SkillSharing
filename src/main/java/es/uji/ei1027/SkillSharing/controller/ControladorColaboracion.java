@@ -36,7 +36,7 @@ public class ControladorColaboracion {
     // Obtener lista de un colaborador
     @RequestMapping("/lista")
     public String listaColaboraciones(Model model) {
-        model.addAttribute("colaboraciones", colaboracionDao.getColaboraciones());
+        model.addAttribute("colaboraciones", colaboracionDao.getDetalleColaboraciones());
         return "colaboracion/lista";
     }
     // cuando el usuario de la petición quiere colaborar con una oferta
@@ -120,6 +120,9 @@ public class ControladorColaboracion {
 
         Colaboracion colaboracion = colaboracionDao.getColaboracion(id_colab);
         colaboracion.setEstado("colaborando");
+
+        colaboracion.setFecha_inicio(java.time.LocalDate.now());
+        colaboracion.setFecha_fin(oferta.getFecha_Fin());
         colaboracionDao.updateColaboracion(colaboracion);
 
         return "colaboracion/exito_colaboracion";

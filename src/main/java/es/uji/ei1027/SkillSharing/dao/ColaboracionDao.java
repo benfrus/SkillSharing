@@ -107,6 +107,16 @@ public class ColaboracionDao {
             return new ArrayList<DetalleColaboracion>();
         }
     }
+
+    public List<DetalleColaboracion> getDetalleColaboraciones() {
+        try {
+            return jdbcTemplate.query("select * from (select c.id_colab, e.nombre as e_oferta, e.id_estudiante as id_e_oferta, o.id_oferta, o.descripcion as desc_oferta from colaboracion as c join oferta as o using(id_oferta) join estudiante as e using(id_estudiante)) as oferta join (select c1.id_colab, e1.nombre as e_peticion, e1.id_estudiante as id_e_peticion, p.id_pet, p.descripcion as desc_peticion, h.nombre as n_habilidad from colaboracion as c1 join peticion as p using(id_pet) join estudiante as e1 using(id_estudiante) join habilidad as h using(id_habilidad)) as peticion using(id_colab)",
+                    new DetalleColaboracionRowMapper());
+        }
+        catch(EmptyResultDataAccessException e) {
+            return new ArrayList<DetalleColaboracion>();
+        }
+    }
 }
 
 

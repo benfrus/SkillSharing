@@ -13,7 +13,7 @@ public class ColaboracionRowMapper implements RowMapper<Colaboracion> {
         Colaboracion colaboracion = new Colaboracion();
         colaboracion.setId_colab(rs.getString("id_colab"));
         colaboracion.setFecha_inicio(rs.getObject("fecha_inicio", LocalDate.class));
-        colaboracion.setFecha_fin(rs.getString("fecha_fin"));
+        colaboracion.setFecha_fin(rs.getObject("fecha_fin", LocalDate.class));
         colaboracion.setHoras_totales(rs.getInt("horas_totales"));
         colaboracion.setEvaluacion(rs.getString("evaluacion"));
         colaboracion.setComentario(rs.getString("comentario"));

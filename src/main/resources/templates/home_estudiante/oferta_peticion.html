@@ -34,7 +34,7 @@
 
             <div class="col-6 py-4">
               <label>Duración de la oferta en meses</label></td>
-              <td><input type="number" th:field="*{mesesExpiracionOferta}" /></td>
+              <td><input type="number" th:field="*{mesesExpiracionOferta}" min="0" max="6"/></td>
             </div>
 
             <h2>Nueva petición</h2>
@@ -53,7 +53,7 @@
 
             <div class="col-6 py-4">
               <label>Duración de la oferta en meses</label></td>
-              <td><input type="number" th:field="*{mesesExpiracionPeticion}" /></td>
+              <td><input type="number" th:field="*{mesesExpiracionPeticion}" min="0" max="6" /></td>
             </div>
 
             <div class="col-12">
