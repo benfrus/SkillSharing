@@ -3,8 +3,12 @@ package es.uji.ei1027.SkillSharing.model;
 public class DetalleColaboracion {
     String idColaboracion;
     String estudianteOferta;
+    String idEstudianteOferta;
     String descripcionOferta;
+    String idOferta;
     String estudiantePeticion;
+    String idEstudiantePeticion;
+    String idPeticion;
     String descripcionPeticion;
 
     public DetalleColaboracion() {
@@ -26,6 +30,14 @@ public class DetalleColaboracion {
         this.estudianteOferta = estudianteOferta;
     }
 
+    public String getIdEstudianteOferta() {
+        return idEstudianteOferta;
+    }
+
+    public void setIdEstudianteOferta(String idEstudianteOferta) {
+        this.idEstudianteOferta = idEstudianteOferta;
+    }
+
     public String getDescripcionOferta() {
         return descripcionOferta;
     }
@@ -34,12 +46,36 @@ public class DetalleColaboracion {
         this.descripcionOferta = descripcionOferta;
     }
 
+    public String getIdOferta() {
+        return idOferta;
+    }
+
+    public void setIdOferta(String idOferta) {
+        this.idOferta = idOferta;
+    }
+
     public String getEstudiantePeticion() {
         return estudiantePeticion;
     }
 
     public void setEstudiantePeticion(String estudiantePeticion) {
         this.estudiantePeticion = estudiantePeticion;
+    }
+
+    public String getIdEstudiantePeticion() {
+        return idEstudiantePeticion;
+    }
+
+    public void setIdEstudiantePeticion(String idEstudiantePeticion) {
+        this.idEstudiantePeticion = idEstudiantePeticion;
+    }
+
+    public String getIdPeticion() {
+        return idPeticion;
+    }
+
+    public void setIdPeticion(String idPeticion) {
+        this.idPeticion = idPeticion;
     }
 
     public String getDescripcionPeticion() {

@@ -73,5 +73,42 @@ public class ControladorColaboracion {
         return "colaboracion/exito_posible_colaboracion";
     }
 
+    @RequestMapping("/aceptar_colaboracion/{id_oferta}/{id_peticion}/{id_colab}/{id_usuario}")
+    public String aceptarColaboracion(Model model, @PathVariable String id_oferta, @PathVariable String id_peticion, @PathVariable String id_colab, @PathVariable String id_usuario) {
+
+        model.addAttribute("id_uduario", id_usuario);
+
+        Oferta oferta = ofertaDao.getOferta(id_oferta);
+        oferta.setEstado("colaborando");
+        ofertaDao.updateOferta(oferta);
+
+        Peticion peticion = peticionDao.getPeticion(id_peticion);
+        peticion.setEstado("colaborando");
+        peticionDao.updatePeticion(peticion);
+
+        Colaboracion colaboracion = colaboracionDao.getColaboracion(id_colab);
+        colaboracion.setEstado("colaborando");
+        colaboracionDao.updateColaboracion(colaboracion);
+
+        return "colaboracion/exito_colaboracion";
+    }
+
+    @RequestMapping("/rechazar_colaboracion/{id_oferta}/{id_peticion}/{id_colab}")
+    public String rechazarColaboracion(@PathVariable String id_oferta, @PathVariable String id_peticion, @PathVariable String id_colab) {
+
+        Oferta oferta = ofertaDao.getOferta(id_oferta);
+        oferta.setEstado("activo");
+        ofertaDao.updateOferta(oferta);
+
+        Peticion peticion = peticionDao.getPeticion(id_peticion);
+        peticion.setEstado("activo");
+        peticionDao.updatePeticion(peticion);
+
+        Colaboracion colaboracion = colaboracionDao.getColaboracion(id_colab);
+        colaboracionDao.deleteColaboracion(colaboracion);
+
+        return "colaboracion/rechazo_colaboracion";
+    }
+
 }
 

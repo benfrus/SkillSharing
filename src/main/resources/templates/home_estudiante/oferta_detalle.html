@@ -34,7 +34,10 @@
         <td th:text="${colab.getEstudiantePeticion()}"></td>
         <td th:text="${colab.getDescripcionPeticion()}"></td>
         <td>
-          <a type="button" class="btn btn-outline-primary">Aceptar</a>
+          <a th:href="@{../../../colaboracion/aceptar_colaboracion/{id_oferta}/{id_peticion}/{id_colab}/{id_usuario}(id_oferta=${oferta_seleccionada.getId_oferta()}, id_peticion=${colab.getIdPeticion()}, id_colab=${colab.getIdColaboracion()}, id_usuario=${colab.getIdEstudiantePeticion()})}" type="button" class="btn btn-outline-primary">Aceptar</a>
+        </td>
+        <td>
+          <a th:href="@{../../../colaboracion/rechazar_colaboracion/{id_oferta}/{id_peticion}/{id_colab}(id_oferta=${oferta_seleccionada.getId_oferta()}, id_peticion=${colab.getIdPeticion()}, id_colab=${colab.getIdColaboracion()})}" type="button" class="btn btn-outline-danger">Rechazar</a>
         </td>
       </tr>
       </tbody>

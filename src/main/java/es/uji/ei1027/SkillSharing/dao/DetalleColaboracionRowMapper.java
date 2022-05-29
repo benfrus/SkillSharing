@@ -14,8 +14,12 @@ public class DetalleColaboracionRowMapper implements RowMapper<DetalleColaboraci
         DetalleColaboracion colaboracion = new DetalleColaboracion();
         colaboracion.setIdColaboracion(rs.getString("id_colab"));
         colaboracion.setEstudianteOferta(rs.getString("e_oferta"));
+        colaboracion.setIdEstudianteOferta(rs.getString("id_e_oferta"));
+        colaboracion.setIdOferta(rs.getString("id_oferta"));
         colaboracion.setDescripcionOferta(rs.getString("desc_oferta"));
         colaboracion.setEstudiantePeticion(rs.getString("e_peticion"));
+        colaboracion.setIdEstudiantePeticion(rs.getString("id_e_peticion"));
+        colaboracion.setIdPeticion(rs.getString("id_pet"));
         colaboracion.setDescripcionPeticion(rs.getString("desc_peticion"));
 
     return colaboracion;

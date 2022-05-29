@@ -41,7 +41,7 @@ public class ColaboracionDao {
     /* Actualitza els atributs del colaboracion
        (excepte el nom, que és la clau primària) */
     public void updateColaboracion(Colaboracion colaboracion) {
-        jdbcTemplate.update("UPDATE colaboracion SET  evaluacion = ?, comenatrio = ?, estado = ? WHERE id_colab = ? ",
+        jdbcTemplate.update("UPDATE colaboracion SET  evaluacion = ?, comenatario = ?, estado = ? WHERE id_colab = ? ",
                 colaboracion.getEvaluacion(), colaboracion.getComentario(), colaboracion.getEstado(),
                 colaboracion.getId_colab() );
     }
@@ -80,7 +80,7 @@ public class ColaboracionDao {
 
     public List<DetalleColaboracion> getDetalleColaboracionByOferta(String id_oferta) {
         try {
-            return jdbcTemplate.query("select * from (select c.id_colab, e.nombre as e_oferta, o.descripcion as desc_oferta from colaboracion as c join oferta as o using(id_oferta) join estudiante as e using(id_estudiante) WHERE id_oferta=?) as oferta join (select c1.id_colab, e1.nombre as e_peticion, p.descripcion as desc_peticion from colaboracion as c1 join peticion as p using(id_pet) join estudiante as e1 using(id_estudiante) WHERE id_oferta=?) as peticion using(id_colab)",
+            return jdbcTemplate.query("select * from (select c.id_colab, e.nombre as e_oferta, e.id_estudiante as id_e_oferta, o.id_oferta, o.descripcion as desc_oferta from colaboracion as c join oferta as o using(id_oferta) join estudiante as e using(id_estudiante) WHERE id_oferta=?) as oferta join (select c1.id_colab, e1.nombre as e_peticion, e1.id_estudiante as id_e_peticion, p.id_pet, p.descripcion as desc_peticion from colaboracion as c1 join peticion as p using(id_pet) join estudiante as e1 using(id_estudiante) WHERE id_oferta=?) as peticion using(id_colab)",
                     new DetalleColaboracionRowMapper(), id_oferta, id_oferta);
         }
         catch(EmptyResultDataAccessException e) {

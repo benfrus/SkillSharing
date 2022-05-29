@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <title>EI1027</title>
+</head>
+<body class="text-center">
+<div class="containter py-4 d-flex justify-content-center">
+  <div class="card border-secondary mb-6" style="max-width: 60rem;">
+    <div class="card-header">COLABORACIÓN ACEPTADA</div>
+    <div class="card-body">
+      <h5 class="card-title">Has aceptado la colaboración</h5>
+      <p class="card-text">Puedes ponerte en contacto a través del correo electrónico: <span th:text="${id_usuario}"></span> @uji.es</p>
+      <a href="../../../home_estudiante/lista" class="btn btn-primary">Volver</a>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
