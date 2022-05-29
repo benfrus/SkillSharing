@@ -10,6 +10,7 @@ public class DetalleColaboracion {
     String idEstudiantePeticion;
     String idPeticion;
     String descripcionPeticion;
+    String nombreHabilidad;
 
     public DetalleColaboracion() {
     }
@@ -84,5 +85,13 @@ public class DetalleColaboracion {
 
     public void setDescripcionPeticion(String descripcionPeticion) {
         this.descripcionPeticion = descripcionPeticion;
+    }
+
+    public String getNombreHabilidad() {
+        return nombreHabilidad;
+    }
+
+    public void setNombreHabilidad(String nombreHabilidad) {
+        this.nombreHabilidad = nombreHabilidad;
     }
 }

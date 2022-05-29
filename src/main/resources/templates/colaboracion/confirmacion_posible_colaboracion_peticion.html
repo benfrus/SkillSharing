@@ -13,7 +13,7 @@
       <h5 class="card-title">¿Quieres enviar a <span th:text="${estudiante_colaborar.getNombre()}"></span> una petición de colaboración?</h5>
       <p class="card-text"> <span th:text="${estudiante_colaborar.getNombre()}"></span> deberá aceptar tu solicitud. Si acepta, podrás ver los detalles de tu colaboración en tu página principal.</p>
       <a href="../../lista" class="btn btn-outline-secondary">No</a>
-      <a th:href="@{../../exito_colaboracion_pendiente/{id_oferta}/{id_peticion}(id_oferta=${id_oferta}, id_peticion=${id_peticion})}"  class="btn btn-primary">Sí</a>
+      <a th:href="@{../../exito_colaboracion_pendiente_peticion/{id_oferta}/{id_peticion}(id_oferta=${id_oferta}, id_peticion=${id_peticion})}"  class="btn btn-primary">Sí</a>
     </div>
   </div>
 </div>

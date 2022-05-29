@@ -21,6 +21,7 @@ public class DetalleColaboracionRowMapper implements RowMapper<DetalleColaboraci
         colaboracion.setIdEstudiantePeticion(rs.getString("id_e_peticion"));
         colaboracion.setIdPeticion(rs.getString("id_pet"));
         colaboracion.setDescripcionPeticion(rs.getString("desc_peticion"));
+        colaboracion.setNombreHabilidad(rs.getString("n_habilidad"));
 
     return colaboracion;
 

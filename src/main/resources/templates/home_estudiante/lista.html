@@ -25,7 +25,7 @@
                 <tr>
                     <th scope="col">Descripción</th>
                     <th scope="col">Fecha fin</th>
-                    <th scope="col">Estado</th>
+                    <th scope="col">Solicitudes</th>
                     <th scope="col">  </th>
                     <th scope="col">  </th>
                 </tr>
@@ -34,9 +34,8 @@
                 <tr th:each="oferta:${ofertas}">
                     <td> <a th:href="@{home_estudiante/ver_oferta/{id_oferta}(id_oferta=${oferta.getId_oferta()})}" th:text="${oferta.descripcion}"></a></td>
                     <td th:text="${oferta.fecha_Fin}"></td>
-                    <td th:text="${oferta.estado}"></td>
-                    <td>
-                        <p th:text="${oferta.getId_oferta()}"></p>
+                    <td class="text-center">
+                        <span th:if="${oferta.estado == 'pendiente'}"><i class="bi bi-bell text-primary"></i></span>
                     </td>
                     <td>
                         <a  type="button" class="btn btn-outline-warning"><i class="bi bi-pencil"></i></a>
@@ -56,7 +55,7 @@
                 <tr>
                     <th scope="col">Descripción</th>
                     <th scope="col">Fecha fin</th>
-                    <th scope="col">Estado</th>
+                    <th scope="col">Solicitudes</th>
                     <th scope="col">  </th>
                     <th scope="col">  </th>
                 </tr>
@@ -65,7 +64,9 @@
                 <tr th:each="peticion:${peticiones}">
                     <td> <a th:href="@{home_estudiante/ver_peticion/{id_peticion}(id_peticion=${peticion.getId_Pet()})}" th:text="${peticion.descripcion}"></a></td>
                     <td th:text="${peticion.fecha_Fin}"></td>
-                    <td th:text="${peticion.estado}"></td>
+                    <td class="text-center">
+                        <span th:if="${peticion.estado == 'pendiente'}"><i class="bi bi-bell text-primary"></i></span>
+                    </td>
                     <td>
                         <a  type="button" class="btn btn-outline-warning"><i class="bi bi-pencil"></i></a>
                     </td>
@@ -76,6 +77,40 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="row my-4">
+        <div class="col">
+            <h2>Mis colaboraciones</h2>
+            <table class="table w-auto">
+                <thead>
+                <tr>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Habilidad</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Estado</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="colab:${colaboraciones}">
+                    <td>
+                        <span th:if="${colab.idEstudianteOferta == estudiante.id_estudiante}" th:text="${colab.idEstudiantePeticion}"></span>
+                        <span th:if="${colab.idEstudiantePeticion == estudiante.id_estudiante}" th:text="${colab.idEstudianteOferta}"></span>
+                    </td>
+                    <td>
+                        <span th:if="${colab.idEstudianteOferta == estudiante.id_estudiante}" th:text="${colab.estudiantePeticion}"></span>
+                        <span th:if="${colab.idEstudiantePeticion == estudiante.id_estudiante}" th:text="${colab.estudianteOferta}"></span>
+                    </td>
+                    <td th:text="${colab.nombreHabilidad}"></td>
+                    <td>
+                        <span th:if="${colab.idEstudianteOferta == estudiante.id_estudiante}" th:text="${colab.descripcionPeticion}"></span>
+                        <span th:if="${colab.idEstudiantePeticion == estudiante.id_estudiante}" th:text="${colab.descripcionOferta}"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>
 </body>

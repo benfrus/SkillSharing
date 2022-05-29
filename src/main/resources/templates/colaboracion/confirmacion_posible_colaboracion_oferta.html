@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <title>EI1027</title>
+</head>
+<body class="text-center">
+<div class="containter py-4 d-flex justify-content-center">
+  <div class="card border-secondary mb-6" style="max-width: 60rem;">
+    <div class="card-header">PETICIÓN DE COLABORACIÓN</div>
+    <div class="card-body">
+      <h5 class="card-title">¿Quieres enviar a <span th:text="${estudiante_colaborar.getNombre()}"></span> una petición de colaboración?</h5>
+      <p class="card-text"> <span th:text="${estudiante_colaborar.getNombre()}"></span> deberá aceptar tu solicitud. Si acepta, podrás ver los detalles de tu colaboración en tu página principal.</p>
+      <a href="../../lista" class="btn btn-outline-secondary">No</a>
+      <a th:href="@{../../exito_colaboracion_pendiente_oferta/{id_oferta}/{id_peticion}(id_oferta=${id_oferta}, id_peticion=${id_peticion})}"  class="btn btn-primary">Sí</a>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

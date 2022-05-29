@@ -17,15 +17,39 @@
     </div>
     <div class="card-footer text-muted">Expira el <span th:text="${peticion_seleccionada.getFecha_Fin()}"></span></div>
   </div>
-
   <div class="row my-4">
-    <h2>¿Con quién puedes colaborar?</h2>
+    <h2>Mis peticiones de colaboración</h2>
   </div>
   <div class="row">
     <table class="table w-auto">
       <thead>
       <tr>
-        <th scope="col">Alumno</th>
+        <th scope="col">Estudiante</th>
+        <th scope="col">Descripción de la petición</th>
+        <th scope="col">  </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="colab:${colaboraciones}">
+        <td th:text="${colab.getEstudianteOferta()}"></td>
+        <td th:text="${colab.getDescripcionOferta()}"></td>
+        <td>
+          <a th:href="@{../../../colaboracion/aceptar_colaboracion/{id_oferta}/{id_peticion}/{id_colab}/{id_usuario}(id_oferta=${colab.getIdOferta()}, id_peticion=${peticion_seleccionada.getId_Pet()}, id_colab=${colab.getIdColaboracion()}, id_usuario=${colab.getIdEstudianteOferta()})}" type="button" class="btn btn-outline-primary">Aceptar</a>
+        </td>
+        <td>
+          <a th:href="@{../../../colaboracion/rechazar_colaboracion/{id_oferta}/{id_peticion}/{id_colab}(id_oferta=${colab.getIdOferta()}, id_peticion=${peticion_seleccionada.getId_Pet()}, id_colab=${colab.getIdColaboracion()})}" type="button" class="btn btn-outline-danger">Rechazar</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row my-4">
+    <h2>¿Con quién puedo colaborar?</h2>
+  </div>
+  <div class="row">
+    <table class="table w-auto">
+      <thead>
+      <tr>
         <th scope="col">Descripción</th>
         <th scope="col">Fecha fin</th>
         <th scope="col">  </th>
@@ -36,7 +60,7 @@
         <td th:text="${oferta.descripcion}"></td>
         <td th:text="${oferta.fecha_Fin}"></td>
         <td>
-          <a  th:href="@{../../../colaboracion/colaboracion_pendiente/{id_oferta}/{id_peticion}(id_oferta=${oferta.getId_oferta()}, id_peticion=${peticion_seleccionada.getId_Pet()})}"  type="button" class="btn btn-outline-primary">Colaborar</a>
+          <a  th:href="@{../../../colaboracion/colaboracion_pendiente_peticion/{id_oferta}/{id_peticion}(id_oferta=${oferta.getId_oferta()}, id_peticion=${peticion_seleccionada.getId_Pet()})}"  type="button" class="btn btn-outline-primary">Colaborar</a>
         </td>
       </tr>
       </tbody>

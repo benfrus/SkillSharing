@@ -45,7 +45,7 @@ public class ControladorUsuario {
 
         model.addAttribute("peticiones", peticionDao.getPeticionesByUser(userDetails.getUsername()));
 
-       // model.addAttribute("colaboraciones", colaboracionDao.get)
+        model.addAttribute("colaboraciones", colaboracionDao.getDetalleColaboracionByUsuario(userDetails.getUsername()));
         return "home_estudiante/lista";
     }
 
@@ -113,7 +113,7 @@ public class ControladorUsuario {
         Oferta ofertaSeleccionada = ofertaDao.getOferta(id_oferta);
         model.addAttribute("oferta_seleccionada", ofertaSeleccionada);
         model.addAttribute("habilidad", habilidadDao.getHabilidad(ofertaSeleccionada.getId_Habilidad()));
-        model.addAttribute("peticiones", peticionDao.getPeticionesParaColaborar(ofertaSeleccionada.getId_Habilidad(), ofertaSeleccionada.getFecha_Fin(), ofertaSeleccionada.getId_Estudiante()));
+        model.addAttribute("peticiones", peticionDao.getPeticionesParaColaborar(ofertaSeleccionada.getId_Habilidad(), ofertaSeleccionada.getFecha_Fin(), ofertaSeleccionada.getId_Estudiante(), id_oferta));
         model.addAttribute("colaboraciones", colaboracionDao.getDetalleColaboracionByOferta(id_oferta));
         return "home_estudiante/oferta_detalle";
     }
@@ -124,7 +124,8 @@ public class ControladorUsuario {
         Peticion peticionSeleccionada = peticionDao.getPeticion(id_peticion);
         model.addAttribute("peticion_seleccionada", peticionSeleccionada);
         model.addAttribute("habilidad", habilidadDao.getHabilidad(peticionSeleccionada.getId_Habilidad()));
-        model.addAttribute("ofertas", ofertaDao.getOfertasByHabilidad(peticionSeleccionada.getId_Habilidad(), peticionSeleccionada.getFecha_Fin()));
+        model.addAttribute("ofertas", ofertaDao.getOfertasParaColaborar(peticionSeleccionada.getId_Habilidad(), peticionSeleccionada.getFecha_Fin(), peticionSeleccionada.getId_Estudiante(), id_peticion));
+        model.addAttribute("colaboraciones", colaboracionDao.getDetalleColaboracionByPeticion(id_peticion));
         return "home_estudiante/peticion_detalle";
     }
 

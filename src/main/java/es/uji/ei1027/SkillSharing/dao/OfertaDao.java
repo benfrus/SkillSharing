@@ -76,6 +76,15 @@ public class OfertaDao {
         }
     }
 
+    public List<Oferta> getOfertasParaColaborar(String id_hab, LocalDate fecha_Fin, String id_estudiante, String id_pet){
+        try{
+            return jdbcTemplate.query("SELECT * FROM oferta WHERE id_habilidad=? and fecha_fin>=? and id_estudiante!=? and estado!='colaborando' and id_oferta NOT IN(SELECT id_oferta FROM colaboracion WHERE id_pet = ?)", new OfertaRowMapper(), id_hab, fecha_Fin, id_estudiante, id_pet);
+        }
+        catch(EmptyResultDataAccessException e) {
+            return new ArrayList<Oferta>();
+        }
+    }
+
 
 }
 

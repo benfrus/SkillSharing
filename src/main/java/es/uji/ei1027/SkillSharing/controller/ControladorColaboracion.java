@@ -39,22 +39,32 @@ public class ControladorColaboracion {
         model.addAttribute("colaboraciones", colaboracionDao.getColaboraciones());
         return "colaboracion/lista";
     }
-
-    @RequestMapping("/colaboracion_pendiente/{id_oferta}/{id_peticion}")
-    public String crearColaboracionPotencial(Model model, @PathVariable String id_oferta, @PathVariable String id_peticion ) {
+    // cuando el usuario de la petición quiere colaborar con una oferta
+    @RequestMapping("/colaboracion_pendiente_peticion/{id_oferta}/{id_peticion}")
+    public String crearColaboracionPotencialDetallePeticion(Model model, @PathVariable String id_oferta, @PathVariable String id_peticion ) {
         Oferta oferta = ofertaDao.getOferta(id_oferta);
         model.addAttribute("id_oferta", id_oferta);
         model.addAttribute("id_peticion", id_peticion);
         model.addAttribute("estudiante_colaborar", estudianteDao.getEstudiante(oferta.getId_Estudiante()));
 
-        return "colaboracion/confirmacion_posible_colaboracion";
+        return "colaboracion/confirmacion_posible_colaboracion_peticion";
+    }
+    // cuando el usuario de la oferta quiere colaborar con una peticion
+    @RequestMapping("/colaboracion_pendiente_oferta/{id_oferta}/{id_peticion}")
+    public String crearColaboracionPotencialDetalleOferta(Model model, @PathVariable String id_oferta, @PathVariable String id_peticion ) {
+        Peticion peticion = peticionDao.getPeticion(id_peticion);
+        model.addAttribute("id_oferta", id_oferta);
+        model.addAttribute("id_peticion", id_peticion);
+        model.addAttribute("estudiante_colaborar", estudianteDao.getEstudiante(peticion.getId_Estudiante()));
+
+        return "colaboracion/confirmacion_posible_colaboracion_oferta";
     }
 
-    @RequestMapping("/exito_colaboracion_pendiente/{id_oferta}/{id_peticion}")
-    public String crearColaboracion(@PathVariable String id_oferta, @PathVariable String id_peticion ) {
+    @RequestMapping("/exito_colaboracion_pendiente_oferta/{id_oferta}/{id_peticion}")
+    public String crearColaboracionOferta(@PathVariable String id_oferta, @PathVariable String id_peticion ) {
 
         Oferta oferta = ofertaDao.getOferta(id_oferta);
-        oferta.setEstado("pendiente");
+        oferta.setEstado("esperando");
         ofertaDao.updateOferta(oferta);
 
         Peticion peticion = peticionDao.getPeticion(id_peticion);
@@ -72,11 +82,33 @@ public class ControladorColaboracion {
 
         return "colaboracion/exito_posible_colaboracion";
     }
+    @RequestMapping("/exito_colaboracion_pendiente_peticion/{id_oferta}/{id_peticion}")
+    public String crearColaboracionPeticion(@PathVariable String id_oferta, @PathVariable String id_peticion ) {
+
+        Oferta oferta = ofertaDao.getOferta(id_oferta);
+        oferta.setEstado("pendiente");
+        ofertaDao.updateOferta(oferta);
+
+        Peticion peticion = peticionDao.getPeticion(id_peticion);
+        peticion.setEstado("esperando");
+        peticionDao.updatePeticion(peticion);
+
+        Colaboracion posibleColaboracion = new Colaboracion();
+        posibleColaboracion.setId_colab(java.util.UUID.randomUUID().toString().substring(1,8));
+        posibleColaboracion.setId_oferta(id_oferta);
+        posibleColaboracion.setId_pet(id_peticion);
+        LocalDate ahora = java.time.LocalDate.now();
+        posibleColaboracion.setFecha_inicio(ahora);
+        posibleColaboracion.setEstado("pendiente");
+        colaboracionDao.addColaboracion(posibleColaboracion);
+
+        return "colaboracion/exito_posible_colaboracion";
+    }
 
     @RequestMapping("/aceptar_colaboracion/{id_oferta}/{id_peticion}/{id_colab}/{id_usuario}")
     public String aceptarColaboracion(Model model, @PathVariable String id_oferta, @PathVariable String id_peticion, @PathVariable String id_colab, @PathVariable String id_usuario) {
 
-        model.addAttribute("id_uduario", id_usuario);
+        model.addAttribute("id_usuario", id_usuario);
 
         Oferta oferta = ofertaDao.getOferta(id_oferta);
         oferta.setEstado("colaborando");

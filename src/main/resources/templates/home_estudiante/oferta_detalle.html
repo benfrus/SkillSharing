@@ -60,7 +60,7 @@
           <td th:text="${peticion.descripcion}"></td>
           <td th:text="${peticion.fecha_Fin}"></td>
           <td>
-            <a th:href="@{../../../colaboracion/colaboracion_pendiente/{id_oferta}/{id_peticion}(id_oferta=${oferta_seleccionada.getId_oferta()}, id_peticion=${peticion.getId_Pet()})}"  type="button" class="btn btn-outline-primary">Colaborar</a>
+            <a th:href="@{../../../colaboracion/colaboracion_pendiente_oferta/{id_oferta}/{id_peticion}(id_oferta=${oferta_seleccionada.getId_oferta()}, id_peticion=${peticion.getId_Pet()})}"  type="button" class="btn btn-outline-primary">Colaborar</a>
           </td>
         </tr>
         </tbody>

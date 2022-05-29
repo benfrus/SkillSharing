@@ -68,9 +68,9 @@ public class PeticionDao {
         }
     }
 
-    public List<Peticion> getPeticionesParaColaborar(String id_hab, LocalDate fecha_Fin, String id_estudiante){
+    public List<Peticion> getPeticionesParaColaborar(String id_hab, LocalDate fecha_Fin, String id_estudiante, String id_oferta){
         try{
-            return jdbcTemplate.query("SELECT * FROM peticion WHERE id_habilidad=? and fecha_fin>=? and id_estudiante!=? and estado='activo'", new PeticionRowMapper(), id_hab, fecha_Fin, id_estudiante);
+            return jdbcTemplate.query("SELECT * FROM peticion WHERE id_habilidad=? and fecha_fin>=? and id_estudiante!=? and estado!='colaborando' and id_pet NOT IN(SELECT id_pet FROM colaboracion WHERE id_oferta = ?)", new PeticionRowMapper(), id_hab, fecha_Fin, id_estudiante, id_oferta);
         }
         catch(EmptyResultDataAccessException e) {
             return new ArrayList<Peticion>();
