@@ -48,7 +48,6 @@ public class ControladorConsell {
 
     @RequestMapping(value="home_consell/activar/{usuario}", method=RequestMethod.GET)
     public String activarEstudiante(Model model, @PathVariable String usuario){
-        System.out.println("en activar usuario");
         model.addAttribute("usuario_activado", usuario);
         return "home_consell/confirmacion_activar";
     }
